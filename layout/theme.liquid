@@ -5,16 +5,17 @@
   {% endif %}
   lang="{{ request.locale.iso_code }}"
   dir="{{ request.locale.direction | default: 'ltr' }}"
+  data-theme="light"
 >
   <head>
     <script>
       (function() {
         try {
           var saved = localStorage.getItem('retrotick_theme');
-          if (saved === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-          } else {
+          if (saved === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'light');
           }
         } catch(e) {}
       })();

@@ -32,7 +32,7 @@
         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
       </svg>
     </span>
-    <span class="rt-toggle-label" id="RtToggleLabel">Dark</span>
+    <span class="rt-toggle-label" id="RtToggleLabel">Light</span>
   </button>
 </div>
 
@@ -49,12 +49,12 @@
         }
       }
 
-      var current = document.documentElement.getAttribute('data-theme') || 'dark';
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
       updateLabel(current);
 
       btn.addEventListener('click', function(e) {
         e.preventDefault();
-        var currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        var currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         var newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
         document.documentElement.setAttribute('data-theme', newTheme);
