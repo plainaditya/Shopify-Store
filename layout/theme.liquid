@@ -9,16 +9,11 @@
 >
   <head>
     <script>
-      (function() {
-        try {
-          var saved = localStorage.getItem('retrotick_theme');
-          if (saved === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-          } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-          }
-        } catch(e) {}
-      })();
+      // Retrotick: Always open in light mode, never in dark mode
+      document.documentElement.setAttribute('data-theme', 'light');
+      try {
+        localStorage.setItem('retrotick_theme', 'light');
+      } catch(e) {}
     </script>
     {%- if settings.favicon != blank -%}
       <link
