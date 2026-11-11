@@ -751,41 +751,48 @@ html[data-theme="light"] .rt-glow-simulator-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #ef4444;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #10b981;
   font-family: var(--rt-font-tech);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  padding: 5px 12px;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
   border-radius: 100px;
   width: fit-content;
   margin-bottom: 0.85rem;
 }
 
+html[data-theme="light"] .rt-stock-alert {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #047857;
+}
+
 .rt-pulse-live {
   width: 7px;
   height: 7px;
-  background: #ef4444;
+  background: #10b981;
   border-radius: 50%;
-  animation: rtPulseRed 1.8s infinite;
+  animation: rtPulseGreen 2s infinite;
 }
 
-@keyframes rtPulseRed {
-  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-  70% { box-shadow: 0 0 0 7px rgba(239, 68, 68, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+@keyframes rtPulseGreen {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 .rt-category-tag {
   font-family: var(--rt-font-tech);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--rt-steel-accent);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.45rem;
   display: block;
+  text-transform: uppercase;
 }
 
 .rt-product-title {
@@ -813,25 +820,52 @@ html[data-theme="light"] .rt-glow-simulator-btn {
 .rt-rating-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 1.25rem;
-  font-size: 0.85rem;
+  gap: 12px;
+  margin-bottom: 1.35rem;
   flex-wrap: wrap;
 }
 
+.rt-avatar-stack {
+  display: flex;
+  align-items: center;
+}
+
+.rt-avatar-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--rt-bg-base);
+  object-fit: cover;
+  margin-left: -8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.rt-avatar-img:first-child {
+  margin-left: 0;
+}
+
+.rt-rating-details {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+}
+
 .rt-stars {
-  color: #fbbf24;
+  color: #f59e0b;
   letter-spacing: 2px;
   font-size: 0.95rem;
 }
 
 .rt-rating-score {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--rt-text-main);
 }
 
 .rt-review-count {
   color: var(--rt-text-muted);
+  font-size: 0.82rem;
 }
 
 .rt-badge-bestseller {
@@ -872,12 +906,12 @@ html[data-theme="light"] .rt-price-box {
   align-items: baseline;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 1rem;
+  gap: 12px;
+  margin-bottom: 0.85rem;
 }
 
 .rt-price-main {
-  font-size: 2.4rem;
+  font-size: 2.5rem;
   font-weight: 900;
   letter-spacing: -0.03em;
   color: var(--rt-text-main);
@@ -886,19 +920,22 @@ html[data-theme="light"] .rt-price-box {
 }
 
 .rt-currency {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   margin-right: 2px;
-}
-
-.rt-decimals {
-  font-size: 1.3rem;
-  opacity: 0.7;
 }
 
 .rt-price-compare {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.rt-mrp-label {
+  font-size: 0.72rem;
+  color: var(--rt-text-subtle);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 .rt-cut-price {
@@ -909,51 +946,62 @@ html[data-theme="light"] .rt-price-box {
 
 .rt-discount-pill {
   font-family: var(--rt-font-tech);
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  color: #ef4444;
-  font-size: 0.8rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
   padding: 3px 9px;
   border-radius: 6px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
 }
 
-/* Stock Progress Bar */
-.rt-stock-progress-wrap {
+html[data-theme="light"] .rt-discount-pill {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #047857;
+}
+
+/* Human Delivery Reassurance Banner */
+.rt-delivery-promise-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--rt-border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 1rem;
 }
 
-.rt-progress-bar {
-  width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 100px;
-  overflow: hidden;
-  margin-bottom: 6px;
+html[data-theme="light"] .rt-delivery-promise-card {
+  background: #f8fafc;
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
-html[data-theme="light"] .rt-progress-bar {
-  background: rgba(0, 0, 0, 0.08);
+.rt-promise-icon {
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
-.rt-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #ef4444, #f59e0b);
-  border-radius: 100px;
-}
-
-.rt-progress-labels {
+.rt-promise-text {
   display: flex;
-  justify-content: space-between;
-  font-size: 0.75rem;
-  color: var(--rt-text-muted);
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
 }
 
-.rt-urgent-text {
-  color: #ef4444;
+.rt-promise-text strong {
+  font-size: 0.82rem;
+  color: var(--rt-text-main);
   font-weight: 700;
+}
+
+.rt-promise-text span {
+  font-size: 0.74rem;
+  color: var(--rt-text-muted);
 }
 
 .rt-deal-perks {
@@ -975,7 +1023,7 @@ html[data-theme="light"] .rt-deal-perks {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .rt-btn-buy-now {
@@ -1069,6 +1117,56 @@ html[data-theme="light"] .rt-btn-add-cart {
 html[data-theme="light"] .rt-btn-add-cart:hover {
   background: #f1f4f8;
   border-color: #0c0d12;
+}
+
+.rt-btn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.rt-btn-main-text {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.rt-btn-sub-text {
+  font-size: 0.76rem;
+  font-weight: 600;
+  opacity: 0.85;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.rt-zero-risk-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--rt-text-muted);
+  margin-bottom: 16px;
+  padding: 8px 14px;
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 100px;
+  text-align: center;
+}
+
+.rt-zero-risk-note svg {
+  stroke: #10b981;
+  flex-shrink: 0;
+}
+
+.rt-zero-risk-note strong {
+  color: var(--rt-text-main);
+}
+
+html[data-theme="light"] .rt-zero-risk-note {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.25);
 }
 
 /* Technical Highlights Strip (Directly Below Add to Cart) */
@@ -1220,6 +1318,42 @@ html[data-theme="light"] .rt-guarantee-item svg {
 .rt-guarantee-sub {
   font-size: 0.74rem;
   color: var(--rt-text-muted);
+}
+
+/* Human Boutique Curator Promise Note */
+.rt-curator-note {
+  margin-top: 1.25rem;
+  padding: 1.15rem 1.25rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--rt-border);
+  border-radius: 14px;
+}
+
+html[data-theme="light"] .rt-curator-note {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.rt-curator-header {
+  margin-bottom: 6px;
+}
+
+.rt-curator-badge {
+  font-family: var(--rt-font-tech);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--rt-steel-accent);
+  text-transform: uppercase;
+}
+
+.rt-curator-note p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--rt-text-muted);
+  margin: 0;
+  font-style: italic;
 }
 
 /* --------------------------------------------------------------------------
