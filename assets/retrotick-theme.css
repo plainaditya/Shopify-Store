@@ -947,10 +947,10 @@ html[data-theme="light"] .rt-deal-perks {
   width: 100%;
   background: linear-gradient(135deg, #ffffff 0%, #e2e6eb 50%, #b8c0cc 100%);
   color: #08090b !important;
-  font-family: var(--rt-font-tech);
-  font-size: 0.98rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   padding: 1.15rem 1.5rem;
   border: none;
@@ -1035,76 +1035,55 @@ html[data-theme="light"] .rt-btn-add-cart:hover {
   border-color: #0c0d12;
 }
 
-/* Fast Delivery & Trust */
-.rt-delivery-pills {
+/* Guarantees Box (Restored Clean 4-Block Grid) */
+.rt-guarantees-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 1.25rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  background: rgba(18, 20, 26, 0.6);
+  border: 1px solid var(--rt-border);
+  border-radius: 14px;
+  padding: 1.15rem;
 }
 
-@media (max-width: 550px) {
-  .rt-delivery-pills {
-    grid-template-columns: 1fr;
-  }
+html[data-theme="light"] .rt-guarantees-grid {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
-.rt-delivery-item {
+.rt-guarantee-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--rt-border);
-  padding: 10px 12px;
-  border-radius: 10px;
+  gap: 12px;
 }
 
-html[data-theme="light"] .rt-delivery-item {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
+.rt-guarantee-item svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--rt-steel-accent);
+  stroke-width: 2;
+  margin-top: 2px;
 }
 
-.rt-delivery-item strong {
-  font-size: 0.8rem;
-  display: block;
+html[data-theme="light"] .rt-guarantee-item svg {
+  stroke: #0c0d12;
+}
+
+.rt-guarantee-title {
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--rt-text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 2px;
 }
 
-.rt-delivery-item p {
-  font-size: 0.72rem;
+.rt-guarantee-sub {
+  font-size: 0.74rem;
   color: var(--rt-text-muted);
-  margin: 0;
-}
-
-.rt-trust-mini-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
-
-@media (max-width: 550px) {
-  .rt-trust-mini-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.rt-trust-chip {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--rt-border);
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 0.73rem;
-  color: var(--rt-text-main);
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-
-html[data-theme="light"] .rt-trust-chip {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
 }
 
 /* --------------------------------------------------------------------------
