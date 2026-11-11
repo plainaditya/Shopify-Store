@@ -1,0 +1,76 @@
+{%- liquid
+  assign product = section.settings.product | default: collections.all.products.first
+  assign current_variant = product.selected_or_first_available_variant
+  assign price = current_variant.price | default: 189500
+-%}
+
+<div class="rt-sticky-bar" id="RtStickyBar" aria-hidden="true">
+  <div class="rt-sticky-inner">
+    <div class="rt-sticky-prod">
+      {%- if product.featured_image != blank -%}
+        <img
+          class="rt-sticky-thumb"
+          src="{{ product.featured_image | image_url: width: 90, height: 90, crop: 'center' }}"
+          alt=""
+          loading="lazy"
+        >
+      {%- else -%}
+        <img
+          class="rt-sticky-thumb"
+          src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=120&q=80"
+          alt=""
+          loading="lazy"
+        >
+      {%- endif -%}
+      <div>
+        <p class="rt-sticky-title">{{ product.title | default: "Casio Vintage Unisex Steel" }}</p>
+        <p class="rt-sticky-price">
+          {%- if product != blank -%}
+            {{ price | money }}
+          {%- else -%}
+            ₹1,895.00
+          {%- endif -%}
+          • <span>Free Shipping + COD</span>
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <a href="#TheWatch" class="rt-sticky-btn" id="RtStickyBtn">
+        ORDER NOW
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const stickyBar = document.getElementById('RtStickyBar');
+    const heroSection = document.getElementById('TheWatch');
+
+    if (!stickyBar || !heroSection) return;
+
+    window.addEventListener('scroll', function() {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (heroBottom < 100) {
+        stickyBar.classList.add('visible');
+        stickyBar.setAttribute('aria-hidden', 'false');
+      } else {
+        stickyBar.classList.remove('visible');
+        stickyBar.setAttribute('aria-hidden', 'true');
+      }
+    }, { passive: true });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Retrotick Sticky Bar",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Retrotick Sticky Bar"
+    }
+  ]
+}
+{% endschema %}
