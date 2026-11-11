@@ -7,6 +7,18 @@
   dir="{{ request.locale.direction | default: 'ltr' }}"
 >
   <head>
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('retrotick_theme');
+          if (saved === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch(e) {}
+      })();
+    </script>
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"
