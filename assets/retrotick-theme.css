@@ -91,16 +91,18 @@ html[data-theme="dark"] .header__row {
 }
 
 /* Eliminate empty vertical gaps between header and first section */
-#MainContent {
+#MainContent,
+.content-for-layout,
+.content-for-layout > .shopify-section:first-child {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
 
-#header-group {
-  margin-bottom: 0 !important;
-}
-
-#header-component {
+#header-group,
+.header-section,
+#header-component,
+.header,
+.header__row {
   margin-bottom: 0 !important;
 }
 
@@ -512,7 +514,7 @@ html[data-theme="light"] .rt-toggle-icon--moon {
   position: relative;
   background: var(--rt-dark-radial);
   border-bottom: 1px solid var(--rt-border);
-  padding: 0.2rem 3vw 2.5rem;
+  padding: 0 3vw 2.5rem;
   overflow: hidden;
   transition: background 0.3s ease;
 }
@@ -529,7 +531,22 @@ html[data-theme="light"] .rt-toggle-icon--moon {
   width: 100%;
 }
 
-@media (max-width: 1100px) {
+@media (min-width: 861px) {
+  .rt-product-section {
+    padding-top: 0 !important;
+  }
+  .rt-product-container {
+    align-items: stretch !important;
+    min-height: calc(100vh - 105px);
+  }
+  .rt-gallery {
+    margin-top: -30px !important;
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 861px) {
   .rt-product-container {
     grid-template-columns: 1.1fr 1fr;
     gap: 2rem;
@@ -540,6 +557,7 @@ html[data-theme="light"] .rt-toggle-icon--moon {
   .rt-product-container {
     grid-template-columns: 1fr;
     gap: 2rem;
+    min-height: auto;
   }
 }
 
@@ -923,6 +941,32 @@ html[data-theme="light"] .rt-glow-simulator-btn {
 .rt-info {
   display: flex;
   flex-direction: column;
+}
+
+@media (min-width: 861px) {
+  .rt-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .rt-stock-alert {
+    margin-bottom: 0.65rem;
+  }
+  .rt-product-title {
+    margin-bottom: 0.45rem;
+  }
+  .rt-product-subtitle {
+    margin-bottom: 0.65rem;
+  }
+  .rt-rating-row {
+    margin-bottom: 0.95rem;
+  }
+  .rt-price-box {
+    margin-bottom: 0.95rem;
+  }
+  .rt-zero-risk-note {
+    margin-bottom: 1.15rem;
+  }
 }
 
 .rt-stock-alert {
@@ -1333,6 +1377,19 @@ html[data-theme="light"] .rt-zero-risk-note {
   margin: 10px 0 14px;
 }
 
+@media (min-width: 861px) {
+  .rt-trust-compact-row {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .rt-trust-compact-row {
+    margin: 12px 0 16px !important;
+  }
+}
+
 @media (max-width: 600px) {
   .rt-trust-compact-row {
     grid-template-columns: repeat(2, 1fr);
@@ -1408,6 +1465,12 @@ html[data-theme="light"] .rt-trust-compact-label span:last-child {
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid var(--rt-border);
   border-radius: 14px;
+}
+
+@media (min-width: 861px) {
+  .rt-curator-note {
+    margin-top: 2.75rem !important;
+  }
 }
 
 html[data-theme="light"] .rt-curator-note {
