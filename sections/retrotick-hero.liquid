@@ -1,209 +1,293 @@
 {%- liquid
   assign product = section.settings.product | default: collections.all.products.first
   assign current_variant = product.selected_or_first_available_variant
+  assign main_img = product.featured_image
 -%}
 
 <section class="rt-product-section" id="TheWatch">
   <div class="rt-product-container">
-    <!-- Media / Gallery Carousel Side -->
+    <!-- Gallery Carousel Showcase -->
     <div class="rt-gallery" id="RtGalleryWrapper">
-      <div class="rt-slider-container">
-        <!-- Floating Badge -->
-        <span class="rt-image-badge">
-          <span>✦</span> 100% Original Japanese Quartz
-        </span>
+      <div class="rt-gallery-stage">
+        <!-- Floating Live Badge -->
+        <div class="rt-stage-badge">
+          <span class="rt-badge-pulse"></span>
+          <span>100% Original Casio Quartz</span>
+        </div>
 
-        <!-- Slides Track -->
-        <div class="rt-slider-track" id="RtSliderTrack">
-          <!-- Slide 1: Featured Image or Fallback -->
-          <div class="rt-slide" data-slide-index="0">
-            {%- if product.featured_image != blank -%}
-              <img
-                src="{{ product.featured_image | image_url: width: 900 }}"
-                alt="{{ product.title | escape }}"
-                class="rt-slide-img"
-                loading="eager"
-                width="600"
-                height="600"
-              >
-            {%- else -%}
-              <img
-                src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=900&q=80"
-                alt="Casio Vintage Stainless Steel Watch"
-                class="rt-slide-img"
-                loading="eager"
-                width="600"
-                height="600"
-              >
-            {%- endif -%}
+        <!-- Slides Container (Crossfade Architecture) -->
+        <div class="rt-slides-viewport" id="RtSlidesViewport">
+          <!-- Slide 0: Front Dial View -->
+          <div class="rt-slide-panel active" data-slide="0">
+            <div class="rt-img-frame">
+              {%- if main_img != blank -%}
+                <img
+                  src="{{ main_img | image_url: width: 900 }}"
+                  alt="{{ product.title | escape }} - Dial View"
+                  class="rt-stage-img"
+                  loading="eager"
+                  width="600"
+                  height="600"
+                >
+              {%- else -%}
+                <img
+                  src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=900&q=80"
+                  alt="Casio Vintage Stainless Steel Watch"
+                  class="rt-stage-img"
+                  loading="eager"
+                  width="600"
+                  height="600"
+                >
+              {%- endif -%}
+            </div>
+            <div class="rt-slide-caption">VIEW 01 // FRONT DIAL</div>
           </div>
 
-          <!-- Slide 2: Second product image or curated angle -->
-          <div class="rt-slide" data-slide-index="1">
+          <!-- Slide 1: Dial & Casing Close-Up -->
+          <div class="rt-slide-panel" data-slide="1">
+            <div class="rt-img-frame rt-frame-zoom">
+              {%- if product.images.size > 1 -%}
+                <img
+                  src="{{ product.images[1] | image_url: width: 900 }}"
+                  alt="Casio Dial Close Up"
+                  class="rt-stage-img"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {%- elsif main_img != blank -%}
+                <img
+                  src="{{ main_img | image_url: width: 900 }}"
+                  alt="Casio Dial Detail"
+                  class="rt-stage-img rt-img-macro"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {%- else -%}
+                <img
+                  src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80"
+                  alt="Casio Vintage Close Up"
+                  class="rt-stage-img"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {%- endif -%}
+            </div>
+            <div class="rt-slide-caption">VIEW 02 // MACRO DETAIL</div>
+          </div>
+
+          <!-- Slide 2: Stainless Steel Bracelet View -->
+          <div class="rt-slide-panel" data-slide="2">
+            <div class="rt-img-frame rt-frame-bracelet">
+              {%- if product.images.size > 2 -%}
+                <img
+                  src="{{ product.images[2] | image_url: width: 900 }}"
+                  alt="Casio Steel Bracelet"
+                  class="rt-stage-img"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {%- elsif main_img != blank -%}
+                <img
+                  src="{{ main_img | image_url: width: 900 }}"
+                  alt="Casio Steel Links"
+                  class="rt-stage-img rt-img-angle"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {%- else -%}
+                <img
+                  src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=900&q=80"
+                  alt="Casio Steel Links"
+                  class="rt-stage-img"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {%- endif -%}
+            </div>
+            <div class="rt-slide-caption">VIEW 03 // 316L STEEL BRACELET</div>
+          </div>
+
+          <!-- Slide 3: Cyan EL Backlight Night Glow View -->
+          <div class="rt-slide-panel rt-slide-night" data-slide="3">
+            <div class="rt-img-frame rt-frame-glow">
+              {%- if product.images.size > 3 -%}
+                <img
+                  src="{{ product.images[3] | image_url: width: 900 }}"
+                  alt="Casio EL Backlight Glow"
+                  class="rt-stage-img"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {%- elsif main_img != blank -%}
+                <img
+                  src="{{ main_img | image_url: width: 900 }}"
+                  alt="Casio Night Glow"
+                  class="rt-stage-img rt-img-night-glow"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {%- else -%}
+                <img
+                  src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=900&q=80"
+                  alt="Casio Night Backlight"
+                  class="rt-stage-img"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {%- endif -%}
+              <div class="rt-el-glow-overlay"></div>
+            </div>
+            <div class="rt-slide-caption rt-caption-glow">VIEW 04 // EL ILLUMINATOR NIGHT GLOW</div>
+          </div>
+        </div>
+
+        <!-- Carousel Navigation Arrows -->
+        <button type="button" class="rt-nav-arrow rt-nav-prev" id="RtNavPrev" aria-label="Previous View">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="rt-nav-arrow rt-nav-next" id="RtNavNext" aria-label="Next View">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <!-- Progress Indicator Dots -->
+        <div class="rt-progress-dots" id="RtProgressDots">
+          <button type="button" class="rt-dot-bar active" data-index="0" aria-label="View 1"></button>
+          <button type="button" class="rt-dot-bar" data-index="1" aria-label="View 2"></button>
+          <button type="button" class="rt-dot-bar" data-index="2" aria-label="View 3"></button>
+          <button type="button" class="rt-dot-bar" data-index="3" aria-label="View 4"></button>
+        </div>
+      </div>
+
+      <!-- Visible Visual Thumbnails Row with Image Previews -->
+      <div class="rt-thumb-gallery" id="RtThumbGallery">
+        <button type="button" class="rt-thumb-card active" data-slide-target="0">
+          <div class="rt-thumb-preview">
+            {%- if main_img != blank -%}
+              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Dial">
+            {%- else -%}
+              <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=120&q=80" alt="Dial">
+            {%- endif -%}
+          </div>
+          <span class="rt-thumb-title">Dial</span>
+        </button>
+
+        <button type="button" class="rt-thumb-card" data-slide-target="1">
+          <div class="rt-thumb-preview">
             {%- if product.images.size > 1 -%}
-              <img
-                src="{{ product.images[1] | image_url: width: 900 }}"
-                alt="Casio Vintage Steel Angle View"
-                class="rt-slide-img"
-                loading="lazy"
-                width="600"
-                height="600"
-              >
+              <img src="{{ product.images[1] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Close Up">
+            {%- elsif main_img != blank -%}
+              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Close Up" style="transform: scale(1.4);">
             {%- else -%}
-              <img
-                src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80"
-                alt="Casio Vintage Steel Profile"
-                class="rt-slide-img"
-                loading="lazy"
-                width="600"
-                height="600"
-              >
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=120&q=80" alt="Close Up">
             {%- endif -%}
           </div>
+          <span class="rt-thumb-title">Close-Up</span>
+        </button>
 
-          <!-- Slide 3: Third product image or on-wrist lifestyle -->
-          <div class="rt-slide" data-slide-index="2">
+        <button type="button" class="rt-thumb-card" data-slide-target="2">
+          <div class="rt-thumb-preview">
             {%- if product.images.size > 2 -%}
-              <img
-                src="{{ product.images[2] | image_url: width: 900 }}"
-                alt="Casio Vintage Wrist View"
-                class="rt-slide-img"
-                loading="lazy"
-                width="600"
-                height="600"
-              >
+              <img src="{{ product.images[2] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Steel">
+            {%- elsif main_img != blank -%}
+              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Steel" style="transform: rotate(20deg);">
             {%- else -%}
-              <img
-                src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=900&q=80"
-                alt="Casio Unisex On Wrist"
-                class="rt-slide-img"
-                loading="lazy"
-                width="600"
-                height="600"
-              >
+              <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=120&q=80" alt="Steel">
             {%- endif -%}
           </div>
+          <span class="rt-thumb-title">Steel Band</span>
+        </button>
 
-          <!-- Slide 4: Night glow / Illuminator view -->
-          <div class="rt-slide" data-slide-index="3">
+        <button type="button" class="rt-thumb-card rt-thumb-card-glow" data-slide-target="3">
+          <div class="rt-thumb-preview">
             {%- if product.images.size > 3 -%}
-              <img
-                src="{{ product.images[3] | image_url: width: 900 }}"
-                alt="Casio EL Backlight Glow"
-                class="rt-slide-img"
-                loading="lazy"
-                width="600"
-                height="600"
-              >
+              <img src="{{ product.images[3] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Night Glow">
+            {%- elsif main_img != blank -%}
+              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Night Glow" style="filter: drop-shadow(0 0 8px #00f0ff);">
             {%- else -%}
-              <img
-                src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=900&q=80"
-                alt="Casio Cyan Backlight"
-                class="rt-slide-img"
-                loading="lazy"
-                width="600"
-                height="600"
-              >
+              <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=120&q=80" alt="Night Glow">
             {%- endif -%}
           </div>
-        </div>
-
-        <!-- Slider Arrows -->
-        <button type="button" class="rt-slider-arrow rt-arrow-prev" id="RtPrevSlide" aria-label="Previous Slide">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button type="button" class="rt-slider-arrow rt-arrow-next" id="RtNextSlide" aria-label="Next Slide">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-
-        <!-- Slider Dots -->
-        <div class="rt-slider-dots" id="RtSliderDots">
-          <button type="button" class="rt-dot active" data-index="0" aria-label="Go to slide 1"></button>
-          <button type="button" class="rt-dot" data-index="1" aria-label="Go to slide 2"></button>
-          <button type="button" class="rt-dot" data-index="2" aria-label="Go to slide 3"></button>
-          <button type="button" class="rt-dot" data-index="3" aria-label="Go to slide 4"></button>
-        </div>
-      </div>
-
-      <!-- Thumbnail Row -->
-      <div class="rt-thumbnails" id="RtThumbnails">
-        <button type="button" class="rt-thumb-item active" data-index="0">
-          <span class="rt-thumb-tag">Dial</span>
-        </button>
-        <button type="button" class="rt-thumb-item" data-index="1">
-          <span class="rt-thumb-tag">Steel</span>
-        </button>
-        <button type="button" class="rt-thumb-item" data-index="2">
-          <span class="rt-thumb-tag">On Wrist</span>
-        </button>
-        <button type="button" class="rt-thumb-item" data-index="3">
-          <span class="rt-thumb-tag">EL Glow</span>
+          <span class="rt-thumb-title">EL Glow 💡</span>
         </button>
       </div>
+
+      <!-- Quick Backlight Glow Simulator Pill -->
+      <button type="button" class="rt-glow-simulator-btn" id="RtGlowSimulatorBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+        <span>Click to test EL Night Backlight</span>
+      </button>
     </div>
 
-    <!-- Info / Conversion Side -->
+    <!-- Info / Conversion Engine Side -->
     <div class="rt-info">
-      <div class="rt-status-pill">
-        <span class="rt-pulse-dot"></span>
-        <span>In Stock • Dispatches Under 24 Hours</span>
+      <!-- Live Inventory & Urgency Header -->
+      <div class="rt-stock-alert">
+        <span class="rt-pulse-live"></span>
+        <span>HIGH DEMAND: ONLY 7 UNITS LEFT AT ₹999</span>
       </div>
 
-      <h1 class="rt-product-title">
-        {{ section.settings.title | default: product.title | default: "Casio Vintage Unisex Stainless Steel Watch" }}
-      </h1>
+      <div class="rt-product-header">
+        <span class="rt-category-tag">RETRO HERITAGE SERIES // UNISEX</span>
+        <h1 class="rt-product-title">
+          {{ section.settings.title | default: product.title | default: "Casio Vintage Unisex Stainless Steel Watch" }}
+        </h1>
+        <p class="rt-product-subtitle">
+          {{ section.settings.subtitle | default: "The definitive 1980s retro icon. Engineered in surgical-grade stainless steel with 30M water-resistance, 7-year battery, and signature cyan ElectroLuminescence backlight." }}
+        </p>
+      </div>
 
-      <p class="rt-product-subtitle">
-        {{ section.settings.subtitle | default: "The timeless 1980s retro icon. Engineered in surgical stainless steel, water-resistant, with signature blue ElectroLuminescence backlight." }}
-      </p>
-
+      <!-- Social Proof Rating -->
       <div class="rt-rating-row">
         <div class="rt-stars">★★★★★</div>
-        <span class="rt-rating-text"><strong>4.9 / 5.0</strong> (1,480+ Reviews)</span>
-        <span class="rt-rating-badge">#1 Best Seller</span>
+        <span class="rt-rating-score">4.9 / 5.0</span>
+        <span class="rt-review-count">(1,480+ Verified Indian Buyers)</span>
+        <span class="rt-badge-bestseller">#1 BEST SELLER</span>
       </div>
 
-      <!-- Price Box (Fixed to ₹999 with ₹1,999 cut and 50% OFF) -->
+      <!-- High-Converting Price Card -->
       <div class="rt-price-box">
-        <div class="rt-price-wrap">
-          <span class="rt-current-price" id="RtPrice">₹999.00</span>
-          <span class="rt-original-price" id="RtComparePrice">₹1,999.00</span>
-          <span class="rt-discount-pill">50% OFF</span>
+        <div class="rt-price-row">
+          <div class="rt-price-main">
+            <span class="rt-currency">₹</span><span class="rt-amount">999</span><span class="rt-decimals">.00</span>
+          </div>
+          <div class="rt-price-compare">
+            <span class="rt-cut-price">₹1,999.00</span>
+            <span class="rt-discount-pill">50% OFF</span>
+          </div>
         </div>
-        <div class="rt-tax-text">
-          ⚡ <strong>Flash Deal:</strong> ₹1,000 Flat Discount Applied • Free Shipping Across India • Cash On Delivery Available
+
+        <!-- Stock Progress Bar -->
+        <div class="rt-stock-progress-wrap">
+          <div class="rt-progress-bar">
+            <div class="rt-progress-fill" style="width: 82%;"></div>
+          </div>
+          <div class="rt-progress-labels">
+            <span>Sold: 1,480 items</span>
+            <span class="rt-urgent-text">🔥 Almost Gone!</span>
+          </div>
+        </div>
+
+        <div class="rt-deal-perks">
+          <span>✓ Free Express Shipping</span>
+          <span>•</span>
+          <span>✓ Cash On Delivery Available</span>
+          <span>•</span>
+          <span>✓ All Taxes Included</span>
         </div>
       </div>
 
-      <!-- Key Feature Pills -->
-      <div class="rt-pill-grid">
-        <div class="rt-pill-item">
-          <span class="rt-pill-icon">⚙️</span>
-          <span>Japanese Quartz Module</span>
-        </div>
-        <div class="rt-pill-item">
-          <span class="rt-pill-icon">🛡️</span>
-          <span>Stainless Steel Link Band</span>
-        </div>
-        <div class="rt-pill-item">
-          <span class="rt-pill-icon">💧</span>
-          <span>30M Water Resistant</span>
-        </div>
-        <div class="rt-pill-item">
-          <span class="rt-pill-icon">💡</span>
-          <span>ElectroLuminescent Glow</span>
-        </div>
-        <div class="rt-pill-item">
-          <span class="rt-pill-icon">🔋</span>
-          <span>7-Year Long Battery</span>
-        </div>
-        <div class="rt-pill-item">
-          <span class="rt-pill-icon">🔄</span>
-          <span>30 Days Return Guarantee</span>
-        </div>
-      </div>
-
-      <!-- Purchase Form -->
+      <!-- Purchase Actions -->
       {%- if product != blank -%}
         {%- form 'product', product, id: 'RtProductForm' -%}
           <input type="hidden" name="id" value="{{ current_variant.id }}" id="RtVariantId">
@@ -225,130 +309,164 @@
       {%- else -%}
         <div class="rt-actions-wrap">
           <a href="/cart" class="rt-btn-buy-now">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
             <span>ORDER NOW — ₹999 (CASH ON DELIVERY)</span>
           </a>
         </div>
       {%- endif -%}
 
-      <!-- Trust & Guarantees -->
-      <div class="rt-guarantees-grid">
-        <div class="rt-guarantee-item">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      <!-- Fast Delivery & Pincode Reassurance -->
+      <div class="rt-delivery-pills">
+        <div class="rt-delivery-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           <div>
-            <div class="rt-guarantee-title">100% Genuine Casio</div>
-            <div class="rt-guarantee-sub">Original box & paperwork</div>
+            <strong>Dispatches Under 24 Hours</strong>
+            <p>Fast track delivery via BlueDart / Delhivery</p>
           </div>
         </div>
-        <div class="rt-guarantee-item">
-          <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+        <div class="rt-delivery-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
           <div>
-            <div class="rt-guarantee-title">Free Express Shipping</div>
-            <div class="rt-guarantee-sub">Fast dispatch under 24 hr</div>
+            <strong>30-Day Hassle-Free Returns</strong>
+            <p>100% money back or direct replacement</p>
           </div>
         </div>
-        <div class="rt-guarantee-item">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          <div>
-            <div class="rt-guarantee-title">30-Day Return Policy</div>
-            <div class="rt-guarantee-sub">Hassle-free replacement</div>
-          </div>
+      </div>
+
+      <!-- Trust Pillars -->
+      <div class="rt-trust-mini-grid">
+        <div class="rt-trust-chip">
+          <span>🛡️</span> 100% Genuine Casio
         </div>
-        <div class="rt-guarantee-item">
-          <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-          <div>
-            <div class="rt-guarantee-title">Cash On Delivery (COD)</div>
-            <div class="rt-guarantee-sub">Pay safely at doorstep</div>
-          </div>
+        <div class="rt-trust-chip">
+          <span>⚙️</span> Japanese Quartz
+        </div>
+        <div class="rt-trust-chip">
+          <span>💧</span> 30M Water Resistant
+        </div>
+        <div class="rt-trust-chip">
+          <span>🔋</span> 7-Year Battery Life
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Automatic 5-Second Carousel Script -->
+<!-- Rock-Solid 5-Second Carousel & Glow Simulator JavaScript -->
 <script>
   (function() {
-    function initSlider() {
-      const track = document.getElementById('RtSliderTrack');
-      const dots = document.querySelectorAll('#RtSliderDots .rt-dot');
-      const thumbs = document.querySelectorAll('#RtThumbnails .rt-thumb-item');
-      const prevBtn = document.getElementById('RtPrevSlide');
-      const nextBtn = document.getElementById('RtNextSlide');
-      const wrapper = document.getElementById('RtGalleryWrapper');
+    function initGallery() {
+      var slides = document.querySelectorAll('#RtSlidesViewport .rt-slide-panel');
+      var dots = document.querySelectorAll('#RtProgressDots .rt-dot-bar');
+      var thumbs = document.querySelectorAll('#RtThumbGallery .rt-thumb-card');
+      var prevBtn = document.getElementById('RtNavPrev');
+      var nextBtn = document.getElementById('RtNavNext');
+      var glowBtn = document.getElementById('RtGlowSimulatorBtn');
+      var wrapper = document.getElementById('RtGalleryWrapper');
 
-      if (!track) return;
+      if (!slides.length) return;
 
-      let currentIndex = 0;
-      const totalSlides = 4;
-      const intervalTime = 5000; // 5 seconds
-      let slideTimer = null;
+      var currentSlide = 0;
+      var totalSlides = slides.length;
+      var slideInterval = null;
+      var intervalDuration = 5000; // 5 seconds
 
-      function goToSlide(index) {
-        currentIndex = (index + totalSlides) % totalSlides;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      function showSlide(index) {
+        currentSlide = (index + totalSlides) % totalSlides;
 
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === currentIndex);
+        slides.forEach(function(s, i) {
+          s.classList.toggle('active', i === currentSlide);
         });
-        thumbs.forEach((thumb, i) => {
-          thumb.classList.toggle('active', i === currentIndex);
+
+        dots.forEach(function(d, i) {
+          d.classList.toggle('active', i === currentSlide);
+        });
+
+        thumbs.forEach(function(t, i) {
+          t.classList.toggle('active', i === currentSlide);
         });
       }
 
-      function nextSlide() {
-        goToSlide(currentIndex + 1);
+      function next() {
+        showSlide(currentSlide + 1);
       }
 
-      function prevSlide() {
-        goToSlide(currentIndex - 1);
+      function prev() {
+        showSlide(currentSlide - 1);
       }
 
-      function startTimer() {
-        stopTimer();
-        slideTimer = setInterval(nextSlide, intervalTime);
+      function startAutoPlay() {
+        stopAutoPlay();
+        slideInterval = setInterval(next, intervalDuration);
       }
 
-      function stopTimer() {
-        if (slideTimer) {
-          clearInterval(slideTimer);
-          slideTimer = null;
+      function stopAutoPlay() {
+        if (slideInterval) {
+          clearInterval(slideInterval);
+          slideInterval = null;
         }
       }
 
-      // Event listeners
-      if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startTimer(); });
-      if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startTimer(); });
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          next();
+          startAutoPlay();
+        });
+      }
 
-      dots.forEach(dot => {
-        dot.addEventListener('click', function() {
-          const idx = parseInt(this.getAttribute('data-index'), 10);
-          goToSlide(idx);
-          startTimer();
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          prev();
+          startAutoPlay();
+        });
+      }
+
+      thumbs.forEach(function(thumb) {
+        thumb.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = parseInt(this.getAttribute('data-slide-target'), 10);
+          showSlide(target);
+          startAutoPlay();
         });
       });
 
-      thumbs.forEach(thumb => {
-        thumb.addEventListener('click', function() {
-          const idx = parseInt(this.getAttribute('data-index'), 10);
-          goToSlide(idx);
-          startTimer();
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = parseInt(this.getAttribute('data-index'), 10);
+          showSlide(target);
+          startAutoPlay();
         });
       });
+
+      // Quick Night Glow Simulator Button
+      if (glowBtn) {
+        glowBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          showSlide(3); // Slide 3 is the Cyan Night Glow
+          startAutoPlay();
+        });
+      }
 
       // Pause on hover
       if (wrapper) {
-        wrapper.addEventListener('mouseenter', stopTimer);
-        wrapper.addEventListener('mouseleave', startTimer);
+        wrapper.addEventListener('mouseenter', stopAutoPlay);
+        wrapper.addEventListener('mouseleave', startAutoPlay);
       }
 
-      // Start automatic 5-second movement
-      startTimer();
+      // Start automatic movement
+      startAutoPlay();
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initSlider);
+      document.addEventListener('DOMContentLoaded', initGallery);
     } else {
-      initSlider();
+      initGallery();
     }
   })();
 </script>
@@ -360,7 +478,7 @@
     {
       "type": "product",
       "id": "product",
-      "label": "Select Product (Optional, auto-selects first product)"
+      "label": "Select Product"
     },
     {
       "type": "text",
@@ -372,7 +490,7 @@
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "The timeless 1980s retro icon. Engineered in surgical stainless steel, water-resistant, with signature blue ElectroLuminescence backlight."
+      "default": "The definitive 1980s retro icon. Engineered in surgical-grade stainless steel with 30M water-resistance, 7-year battery, and signature cyan ElectroLuminescence backlight."
     }
   ],
   "presets": [
