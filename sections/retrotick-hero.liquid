@@ -262,7 +262,7 @@
         </div>
       </div>
 
-      <!-- Classy, High-Trust Price Box (No Fake Progress Bars) -->
+      <!-- Classy, High-Trust Price Box -->
       <div class="rt-price-box">
         <div class="rt-price-row">
           <div class="rt-price-main">
@@ -275,7 +275,7 @@
           </div>
         </div>
 
-        <!-- Human Delivery Reassurance Banner (Replacing Spammy Progress Bar) -->
+        <!-- Human Delivery Reassurance Banner -->
         <div class="rt-delivery-promise-card">
           <div class="rt-promise-icon">🚚</div>
           <div class="rt-promise-text">
@@ -283,19 +283,9 @@
             <span>Order now & receive in 2–4 business days via BlueDart / Delhivery</span>
           </div>
         </div>
-
-        <div class="rt-deal-perks">
-          <span>✓ Free Express Shipping</span>
-          <span>•</span>
-          <span>✓ Cash on Delivery (COD)</span>
-          <span>•</span>
-          <span>✓ 30-Day Hassle-Free Returns</span>
-          <span>•</span>
-          <span>✓ All Taxes Included</span>
-        </div>
       </div>
 
-      <!-- Purchase Actions with Two-Line Primary Button -->
+      <!-- Purchase Actions: One Big Full-Width Primary CTA + Subtle Secondary Option -->
       {%- if product != blank -%}
         {%- form 'product', product, id: 'RtProductForm' -%}
           <input type="hidden" name="id" value="{{ current_variant.id }}" id="RtVariantId">
@@ -303,26 +293,22 @@
 
           <div class="rt-actions-wrap">
             <button type="submit" class="rt-btn-buy-now" name="add" data-buy-now="true">
-              <div class="rt-btn-content">
-                <span class="rt-btn-main-text">ORDER NOW — CASH ON DELIVERY</span>
-                <span class="rt-btn-sub-text">Pay ₹999 only when your parcel arrives</span>
-              </div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="rt-btn-lock-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Order Now – ₹999 (COD)</span>
             </button>
-            <button type="submit" class="rt-btn-add-cart" name="add">
-              <span>Add to Cart</span>
+            <button type="submit" class="rt-btn-add-cart-secondary" name="add">
+              <span>+ Add to Cart</span>
             </button>
           </div>
         {%- endform -%}
       {%- else -%}
         <div class="rt-actions-wrap">
           <a href="/cart" class="rt-btn-buy-now">
-            <div class="rt-btn-content">
-              <span class="rt-btn-main-text">ORDER NOW — CASH ON DELIVERY</span>
-              <span class="rt-btn-sub-text">Pay ₹999 only when your parcel arrives</span>
-            </div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="rt-btn-lock-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>Order Now – ₹999 (COD)</span>
           </a>
-          <a href="/cart" class="rt-btn-add-cart">
-            <span>Add to Cart</span>
+          <a href="/cart" class="rt-btn-add-cart-secondary">
+            <span>+ Add to Cart</span>
           </a>
         </div>
       {%- endif -%}
@@ -333,66 +319,45 @@
         <span><strong>100% Risk-Free:</strong> Open & inspect your watch at your doorstep before paying</span>
       </div>
 
-      <!-- Technical Feature Highlights Strip (Directly Below Add to Cart) -->
-      <div class="rt-trust-mini-grid">
-        <div class="rt-trust-chip">
-          <span class="rt-chip-icon">🛡️</span>
-          <div class="rt-chip-label">
+      <!-- Single Compact Row of 4 Trust Icons Under The Button -->
+      <div class="rt-trust-compact-row">
+        <div class="rt-trust-compact-item">
+          <div class="rt-trust-compact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <div class="rt-trust-compact-label">
+            <span>Free Express</span>
+            <span>Delivery</span>
+          </div>
+        </div>
+
+        <div class="rt-trust-compact-item">
+          <div class="rt-trust-compact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
+          </div>
+          <div class="rt-trust-compact-label">
+            <span>Cash On</span>
+            <span>Delivery</span>
+          </div>
+        </div>
+
+        <div class="rt-trust-compact-item">
+          <div class="rt-trust-compact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          </div>
+          <div class="rt-trust-compact-label">
             <span>100% Genuine</span>
             <span>Casio</span>
           </div>
         </div>
-        <div class="rt-trust-chip">
-          <span class="rt-chip-icon">⚙️</span>
-          <div class="rt-chip-label">
-            <span>Japanese</span>
-            <span>Quartz</span>
-          </div>
-        </div>
-        <div class="rt-trust-chip">
-          <span class="rt-chip-icon">💧</span>
-          <div class="rt-chip-label">
-            <span>30M Water</span>
-            <span>Resistant</span>
-          </div>
-        </div>
-        <div class="rt-trust-chip">
-          <span class="rt-chip-icon">🔋</span>
-          <div class="rt-chip-label">
-            <span>7-Year</span>
-            <span>Battery Life</span>
-          </div>
-        </div>
-      </div>
 
-      <!-- Trust & Guarantees (Restored) -->
-      <div class="rt-guarantees-grid">
-        <div class="rt-guarantee-item">
-          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-          <div>
-            <div class="rt-guarantee-title">Dispatches Under 24 Hours</div>
-            <div class="rt-guarantee-sub">Fast track via BlueDart / Delhivery</div>
+        <div class="rt-trust-compact-item">
+          <div class="rt-trust-compact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
           </div>
-        </div>
-        <div class="rt-guarantee-item">
-          <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-          <div>
-            <div class="rt-guarantee-title">Free Express Shipping</div>
-            <div class="rt-guarantee-sub">Tracked delivery across India</div>
-          </div>
-        </div>
-        <div class="rt-guarantee-item">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          <div>
-            <div class="rt-guarantee-title">30-Day Hassle-Free Returns</div>
-            <div class="rt-guarantee-sub">100% money back or replacement</div>
-          </div>
-        </div>
-        <div class="rt-guarantee-item">
-          <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-          <div>
-            <div class="rt-guarantee-title">Cash On Delivery (COD)</div>
-            <div class="rt-guarantee-sub">Pay safely at doorstep</div>
+          <div class="rt-trust-compact-label">
+            <span>30-Day Easy</span>
+            <span>Returns</span>
           </div>
         </div>
       </div>
