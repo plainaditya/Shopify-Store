@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 /* ==========================================================================
    RETROTICK THEME STYLESHEET
    Aesthetic: Dark & Steel • Minimalist / Modern • Retro Vintage Heritage
@@ -6,6 +8,7 @@
 
 :root,
 html[data-theme="dark"] {
+  --rt-font-tech: 'Space Mono', 'JetBrains Mono', -apple-system, BlinkMacSystemFont, "SF Mono", monospace;
   --rt-bg-base: #07080a;
   --rt-bg-surface: #0e1015;
   --rt-bg-card: #13161c;
@@ -29,6 +32,7 @@ html[data-theme="dark"] {
    LIGHT MODE DESIGN SYSTEM (Brushed Platinum & Swiss Editorial)
    -------------------------------------------------------------------------- */
 html[data-theme="light"] {
+  --rt-font-tech: 'Space Mono', 'JetBrains Mono', -apple-system, BlinkMacSystemFont, "SF Mono", monospace;
   --rt-bg-base: #f8f9fb;
   --rt-bg-surface: #ffffff;
   --rt-bg-card: #ffffff;
@@ -139,7 +143,7 @@ html[data-theme="light"] .header-actions svg path {
 
 /* Header Logo */
 .header-logo {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace !important;
+  font-family: var(--rt-font-tech) !important;
   letter-spacing: 0.16em !important;
   font-weight: 800 !important;
   text-transform: uppercase !important;
@@ -203,7 +207,7 @@ html[data-theme="light"] .rt-marquee-bar {
   align-items: center;
   gap: 1.5rem;
   padding-right: 1.5rem;
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -254,7 +258,7 @@ html[data-theme="light"] .rt-marquee-content {
   border-radius: 100px;
   cursor: pointer;
   color: var(--rt-text-main);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.72rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -412,7 +416,7 @@ html[data-theme="light"] .rt-gallery-stage {
   border: 1px solid var(--rt-border-bright);
   padding: 5px 12px;
   border-radius: 100px;
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -506,7 +510,7 @@ html[data-theme="light"] .rt-stage-img {
   position: absolute;
   bottom: 14px;
   left: 18px;
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -637,7 +641,7 @@ html[data-theme="light"] .rt-thumb-preview {
 }
 
 .rt-thumb-title {
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -672,7 +676,7 @@ html[data-theme="light"] .rt-thumb-card.active .rt-thumb-title {
   background: rgba(0, 240, 255, 0.06);
   border: 1px solid rgba(0, 240, 255, 0.25);
   color: var(--rt-cyan-glow);
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -714,7 +718,7 @@ html[data-theme="light"] .rt-glow-simulator-btn {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);
   color: #ef4444;
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -739,7 +743,7 @@ html[data-theme="light"] .rt-glow-simulator-btn {
 }
 
 .rt-category-tag {
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -799,7 +803,7 @@ html[data-theme="light"] .rt-glow-simulator-btn {
   border: 1px solid var(--rt-border-bright);
   padding: 2px 8px;
   border-radius: 4px;
-  font-family: ui-monospace, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.68rem;
   color: var(--rt-steel-accent);
   font-weight: 700;
@@ -868,6 +872,7 @@ html[data-theme="light"] .rt-price-box {
 }
 
 .rt-discount-pill {
+  font-family: var(--rt-font-tech);
   background: rgba(239, 68, 68, 0.15);
   border: 1px solid rgba(239, 68, 68, 0.35);
   color: #ef4444;
@@ -876,7 +881,7 @@ html[data-theme="light"] .rt-price-box {
   text-transform: uppercase;
   padding: 3px 9px;
   border-radius: 6px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 /* Stock Progress Bar */
@@ -942,10 +947,10 @@ html[data-theme="light"] .rt-deal-perks {
   width: 100%;
   background: linear-gradient(135deg, #ffffff 0%, #e2e6eb 50%, #b8c0cc 100%);
   color: #08090b !important;
-  font-family: inherit;
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  font-family: var(--rt-font-tech);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 1.15rem 1.5rem;
   border: none;
@@ -1166,9 +1171,10 @@ html[data-theme="light"] .rt-trust-icon-wrap {
 }
 
 .rt-trust-heading {
+  font-family: var(--rt-font-tech);
   font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--rt-text-main);
   margin: 0 0 2px 0;
@@ -1198,7 +1204,7 @@ html[data-theme="light"] .rt-trust-icon-wrap {
 
 .rt-section-badge {
   display: inline-block;
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -1272,7 +1278,7 @@ html[data-theme="light"] .rt-feature-card:hover {
 }
 
 .rt-feature-number {
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.75rem;
   color: var(--rt-text-subtle);
   margin-bottom: 1.25rem;
@@ -1358,7 +1364,7 @@ html[data-theme="light"] .rt-lifestyle-card {
 }
 
 .rt-lifestyle-tag {
-  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-family: var(--rt-font-tech);
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1445,11 +1451,12 @@ html[data-theme="light"] .rt-specs-row:nth-child(even) {
 }
 
 .rt-specs-label {
-  font-weight: 600;
+  font-family: var(--rt-font-tech);
+  font-weight: 700;
   color: var(--rt-text-muted);
   text-transform: uppercase;
   font-size: 0.78rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .rt-specs-value {
@@ -1625,6 +1632,7 @@ html[data-theme="light"] .rt-sticky-thumb {
 }
 
 .rt-sticky-btn {
+  font-family: var(--rt-font-tech);
   background: linear-gradient(135deg, #ffffff 0%, #cbd2db 100%);
   color: #090a0d !important;
   font-weight: 700;
@@ -1633,7 +1641,7 @@ html[data-theme="light"] .rt-sticky-thumb {
   padding: 0.7rem 1.6rem;
   border-radius: 8px;
   text-decoration: none;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   white-space: nowrap;
   box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
 }
