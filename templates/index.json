@@ -10,10 +10,6 @@
         "fallback_compare_price": 269500
       }
     },
-    "retrotick_trust": {
-      "type": "retrotick-trust-bar",
-      "settings": {}
-    },
     "retrotick_features": {
       "type": "retrotick-features",
       "settings": {}
