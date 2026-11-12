@@ -545,8 +545,8 @@ html[data-theme="light"] .rt-toggle-icon--moon {
   position: relative;
   background: var(--rt-dark-radial);
   border-bottom: 1px solid var(--rt-border);
-  padding: 0 3vw 2.5rem;
-  overflow: hidden;
+  padding: 14px 3vw clamp(2.5rem, 4vh, 3.5rem);
+  /* overflow: hidden removed so content is never clipped */
   transition: background 0.3s ease;
 }
 
@@ -555,8 +555,8 @@ html[data-theme="light"] .rt-toggle-icon--moon {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.18fr 1fr;
-  gap: 2.75rem;
-  align-items: start;
+  gap: 2.5rem;
+  align-items: stretch;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -564,28 +564,37 @@ html[data-theme="light"] .rt-toggle-icon--moon {
 
 @media (min-width: 861px) {
   .rt-product-section {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-top: 12px;
+    padding-bottom: clamp(2rem, 3.5vh, 2.75rem);
+    min-height: calc(100dvh - var(--header-group-height, var(--header-height, 65px)));
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
   .rt-product-container {
     align-items: stretch !important;
-    height: calc(100dvh - var(--header-group-height, 65px) - 8px);
-    min-height: calc(100dvh - var(--header-group-height, 65px) - 8px);
+    min-height: calc(100dvh - var(--header-group-height, var(--header-height, 65px)) - clamp(2rem, 3.5vh, 2.75rem) - 12px);
+    height: auto;
+    flex: 1 1 auto;
   }
   .rt-gallery {
-    margin-top: 4px !important;
+    margin-top: 0 !important;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
     position: relative;
     top: 0;
   }
   .rt-info {
-    height: 100%;
+    height: auto;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: clamp(8px, 1.2vh, 16px);
   }
 }
 
@@ -598,19 +607,22 @@ html[data-theme="light"] .rt-toggle-icon--moon {
 
 @media (max-width: 860px) {
   .rt-product-section {
-    padding-top: 0 !important;
+    padding-top: 10px !important;
+    padding-bottom: 2.5rem !important;
+    min-height: auto;
   }
   .rt-product-container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
     min-height: auto;
   }
   .rt-gallery {
-    min-height: calc(100dvh - var(--header-group-height, 60px) - 16px);
+    min-height: calc(100dvh - var(--header-group-height, var(--header-height, 60px)) - 24px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-bottom: 6px;
+    gap: 10px;
+    padding-bottom: 0;
     position: relative;
     top: 0;
   }
@@ -626,15 +638,17 @@ html[data-theme="light"] .rt-toggle-icon--moon {
 .rt-gallery-stage {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  max-height: min(530px, 56vh);
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: 520px;
   background: #ffffff;
   border: 1px solid var(--rt-border-bright);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
-  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 html[data-theme="light"] .rt-gallery-stage {
@@ -734,14 +748,14 @@ html[data-theme="dark"] .rt-slide-panel.rt-slide-night {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  object-position: center top;
-  transform: scale(1.12);
+  object-position: center center;
+  transform: none;
   filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.22));
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rt-gallery-stage:hover .rt-stage-img {
-  transform: scale(1.17);
+  transform: scale(1.04);
 }
 
 .rt-frame-zoom .rt-stage-img {
@@ -885,14 +899,15 @@ html[data-theme="light"] .rt-dot-bar.active {
   background: #0c0d12;
 }
 
-/* VISIBLE THUMBNAIL GALLERY CARDS - 5 Expanded Balanced Columns */
+/* VISIBLE THUMBNAIL GALLERY CARDS - Deterministic Fixed Height, flex-shrink: 0 */
 .rt-thumb-gallery {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
-  margin-top: auto;
-  margin-bottom: 12px;
+  flex-shrink: 0;
   width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .rt-thumb-card {
@@ -900,17 +915,18 @@ html[data-theme="light"] .rt-dot-bar.active {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   background: var(--rt-bg-card);
   border: 1px solid var(--rt-border);
   border-radius: 12px;
-  padding: 8px 4px 10px;
+  padding: 6px 3px 8px;
   cursor: pointer;
   transition: all 0.25s ease;
   outline: none;
   min-width: 0;
   width: 100%;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 html[data-theme="light"] .rt-thumb-card {
@@ -920,13 +936,32 @@ html[data-theme="light"] .rt-thumb-card {
 
 .rt-thumb-preview {
   width: 100%;
-  height: clamp(62px, 8vh, 78px);
+  height: 60px;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #ffffff !important;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .rt-thumb-gallery {
+    gap: 4px;
+  }
+  .rt-thumb-preview {
+    height: 48px;
+    border-radius: 6px;
+  }
+  .rt-thumb-card {
+    padding: 4px 1px 6px;
+    border-radius: 8px;
+  }
+  .rt-thumb-title {
+    font-size: 0.58rem;
+    letter-spacing: 0.02em;
+  }
 }
 
 .rt-thumb-card-glow .rt-thumb-preview {
@@ -949,7 +984,7 @@ html[data-theme="light"] .rt-thumb-card-glow .rt-thumb-preview {
 
 .rt-thumb-title {
   font-family: var(--rt-font-tech);
-  font-size: clamp(0.68rem, 0.72vw, 0.76rem);
+  font-size: clamp(0.66rem, 0.72vw, 0.74rem);
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -958,6 +993,7 @@ html[data-theme="light"] .rt-thumb-card-glow .rt-thumb-preview {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  line-height: 1.1;
 }
 
 .rt-thumb-card:hover,
@@ -980,7 +1016,7 @@ html[data-theme="light"] .rt-thumb-card.active .rt-thumb-title {
   color: #0c0d12;
 }
 
-/* Glow Simulator Button - Darker Noticeable Deep Navy Blue with White Text & Strong Border */
+/* Glow Simulator Button - Flex-shrink: 0, Always Fully Visible At Bottom */
 .rt-glow-simulator-btn {
   width: 100%;
   margin-top: 0;
@@ -989,20 +1025,44 @@ html[data-theme="light"] .rt-thumb-card.active .rt-thumb-title {
   border: 1.5px solid #00b4d8;
   color: #ffffff !important;
   font-family: var(--rt-font-tech);
-  font-size: clamp(0.74rem, 0.8vw, 0.82rem);
+  font-size: clamp(0.72rem, 0.78vw, 0.82rem);
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 12px 18px;
+  padding: 11px 16px;
   border-radius: 100px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   transition: all 0.25s ease;
   box-shadow: 0 4px 18px rgba(7, 25, 44, 0.24);
   outline: none;
+  min-height: 44px;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+.rt-glow-simulator-btn span {
+  white-space: normal;
+  line-height: 1.25;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .rt-glow-simulator-btn {
+    padding: 9px 10px;
+    font-size: 0.67rem;
+    gap: 6px;
+    min-height: 40px;
+  }
+  .rt-glow-simulator-btn span {
+    white-space: normal;
+    line-height: 1.2;
+  }
 }
 
 html[data-theme="light"] .rt-glow-simulator-btn {
@@ -1052,9 +1112,9 @@ html[data-theme="dark"] .rt-glow-simulator-btn {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    height: auto;
     min-height: 100%;
-    gap: clamp(10px, 1.8vh, 22px);
+    gap: clamp(8px, 1.2vh, 16px);
   }
   .rt-stock-alert {
     margin: 0 !important;
@@ -1076,10 +1136,10 @@ html[data-theme="dark"] .rt-glow-simulator-btn {
   }
   .rt-actions-wrap {
     margin: 0 !important;
-    gap: clamp(10px, 1.4vh, 14px);
+    gap: clamp(8px, 1.1vh, 12px);
   }
   .rt-zero-risk-note {
-    margin: 0 !important;
+    margin: 8px 0 0 0 !important;
   }
   .rt-trust-compact-row {
     margin-top: 0 !important;
