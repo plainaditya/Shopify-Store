@@ -246,10 +246,20 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "retrotick_trust": {
+      "type": "retrotick-trust-bar",
+      "settings": {}
+    },
+    "retrotick_faq": {
+      "type": "retrotick-faq",
+      "settings": {}
     }
   },
   "order": [
     "cart-section",
-    "product_list_NNFgcy"
+    "product_list_NNFgcy",
+    "retrotick_trust",
+    "retrotick_faq"
   ]
 }

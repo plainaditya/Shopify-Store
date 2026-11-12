@@ -23,14 +23,24 @@
   style="{% render 'spacing-style', settings: block_settings %}"
   {{ block.shopify_attributes }}
 >
-  <h1 class="{{ block_settings.type_preset | default: 'h2' }}">
+  {%- unless cart.empty? or force_empty -%}
+    <div class="rt-cart-badge-wrap">
+      <span class="rt-section-badge">✦ DISPATCH QUEUE // RETROTICK.IN</span>
+    </div>
+  {%- endunless -%}
+  <h1 class="{{ block_settings.type_preset | default: 'h2' }} rt-cart-main-title">
     {%- if cart.empty? or force_empty -%}
       {{ 'content.your_cart_is_empty' | t }}
     {%- else -%}
-      {{ block_settings.title }}
+      Review Your Timepieces
       {%- if block_settings.show_count -%}{% render 'cart-bubble' %}{%- endif -%}
     {%- endif -%}
   </h1>
+  {%- unless cart.empty? or force_empty -%}
+    <p class="rt-cart-sub-desc">
+      All timepieces undergo multi-point inspection prior to packaging. Orders dispatch in 24h.
+    </p>
+  {%- endunless -%}
 </div>
 
 {% stylesheet %}
