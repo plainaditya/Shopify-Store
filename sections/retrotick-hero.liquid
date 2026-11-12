@@ -246,7 +246,7 @@
 
       <!-- Quick Backlight Glow Simulator Pill -->
       <button type="button" class="rt-glow-simulator-btn" id="RtGlowSimulatorBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#00f0ff" stroke="#00f0ff" stroke-width="1.5">
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
         </svg>
         <span>Click to test EL Night Backlight</span>
@@ -434,6 +434,32 @@
       var slideInterval = null;
       var intervalDuration = 5000; // 5 seconds
 
+      function updateThemeForSlide(slideIdx) {
+        var isNightSlide = (slideIdx === 4);
+        var targetTheme = isNightSlide ? 'dark' : 'light';
+        var currentTheme = document.documentElement.getAttribute('data-theme');
+
+        if (currentTheme !== targetTheme) {
+          document.documentElement.setAttribute('data-theme', targetTheme);
+          try {
+            localStorage.setItem('retrotick_theme', targetTheme);
+          } catch(err) {}
+          var toggleInputs = document.querySelectorAll('#rt-theme-checkbox');
+          toggleInputs.forEach(function(inp) { inp.checked = isNightSlide; });
+        }
+
+        if (glowBtn) {
+          var btnSpan = glowBtn.querySelector('span');
+          if (btnSpan) {
+            if (isNightSlide) {
+              btnSpan.textContent = 'EL Night Glow Active (Click to Return to Daylight)';
+            } else {
+              btnSpan.textContent = 'Click to test EL Night Backlight';
+            }
+          }
+        }
+      }
+
       function showSlide(index) {
         currentSlide = (index + totalSlides) % totalSlides;
 
@@ -449,16 +475,9 @@
           t.classList.toggle('active', i === currentSlide);
         });
 
-        if (glowBtn) {
-          var btnSpan = glowBtn.querySelector('span');
-          if (btnSpan) {
-            if (currentSlide === 4) {
-              btnSpan.textContent = 'EL Night Glow Active (Click to Return to Daylight)';
-            } else {
-              btnSpan.textContent = 'Click to test EL Night Backlight';
-            }
-          }
-        }
+        // Auto dark mode trigger on the 5th image (EL GLOW, index 4)
+        // Automatically turns on dark mode whenever on slide 4, and returns to normal light mode on all other slides
+        updateThemeForSlide(currentSlide);
       }
 
       function next() {
@@ -501,22 +520,12 @@
         thumb.addEventListener('click', function(e) {
           e.preventDefault();
           var target = parseInt(this.getAttribute('data-slide-target'), 10);
+          showSlide(target);
           if (target === 4) {
-            // 5th image: automatically turn on dark mode
-            document.documentElement.setAttribute('data-theme', 'dark');
-            try { localStorage.setItem('retrotick_theme', 'dark'); } catch(err) {}
-            var toggleInputs = document.querySelectorAll('#rt-theme-checkbox');
-            toggleInputs.forEach(function(inp) { inp.checked = true; });
             stopAutoPlay();
           } else {
-            // Daytime images (0, 1, 2, 3): return to light mode
-            document.documentElement.setAttribute('data-theme', 'light');
-            try { localStorage.setItem('retrotick_theme', 'light'); } catch(err) {}
-            var toggleInputs = document.querySelectorAll('#rt-theme-checkbox');
-            toggleInputs.forEach(function(inp) { inp.checked = false; });
             startAutoPlay();
           }
-          showSlide(target);
         });
       });
 
@@ -525,7 +534,11 @@
           e.preventDefault();
           var target = parseInt(this.getAttribute('data-index'), 10);
           showSlide(target);
-          startAutoPlay();
+          if (target === 4) {
+            stopAutoPlay();
+          } else {
+            startAutoPlay();
+          }
         });
       });
 
@@ -533,25 +546,40 @@
       if (glowBtn) {
         glowBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-          if (isDark && currentSlide === 4) {
-            // Return to light mode and slide 0
-            document.documentElement.setAttribute('data-theme', 'light');
-            try { localStorage.setItem('retrotick_theme', 'light'); } catch(err) {}
-            var toggleInputs = document.querySelectorAll('#rt-theme-checkbox');
-            toggleInputs.forEach(function(inp) { inp.checked = false; });
+          if (currentSlide === 4) {
+            // Already in night view -> return to daylight view
             showSlide(0);
             startAutoPlay();
           } else {
-            // Automatically turn on dark mode
-            document.documentElement.setAttribute('data-theme', 'dark');
-            try { localStorage.setItem('retrotick_theme', 'dark'); } catch(err) {}
-            var toggleInputs = document.querySelectorAll('#rt-theme-checkbox');
-            toggleInputs.forEach(function(inp) { inp.checked = true; });
-            showSlide(4); // Slide 4 is the real Cyan EL Night Glow image
+            // Jump directly to 5th view -> auto-triggers dark mode
+            showSlide(4);
             stopAutoPlay();
           }
         });
+      }
+
+      // Mobile Touch Swipe Handling
+      var touchStartX = 0;
+      var touchEndX = 0;
+      var stageBox = document.getElementById('RtSlidesViewport');
+
+      if (stageBox) {
+        stageBox.addEventListener('touchstart', function(e) {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        stageBox.addEventListener('touchend', function(e) {
+          touchEndX = e.changedTouches[0].screenX;
+          var diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) {
+              next(); // Swipe left -> Next view
+            } else {
+              prev(); // Swipe right -> Previous view
+            }
+            startAutoPlay();
+          }
+        }, { passive: true });
       }
 
       // Pause on hover
