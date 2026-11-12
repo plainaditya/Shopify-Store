@@ -465,10 +465,35 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "retrotick_trust": {
+      "type": "retrotick-trust-bar",
+      "settings": {}
+    },
+    "retrotick_features": {
+      "type": "retrotick-features",
+      "settings": {}
+    },
+    "retrotick_reviews": {
+      "type": "retrotick-reviews",
+      "settings": {}
+    },
+    "retrotick_faq": {
+      "type": "retrotick-faq",
+      "settings": {}
+    },
+    "retrotick_sticky": {
+      "type": "retrotick-sticky-buy",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "retrotick_trust",
+    "retrotick_features",
+    "retrotick_reviews",
+    "retrotick_faq",
+    "product_recommendations_qggXJq",
+    "retrotick_sticky"
   ]
 }

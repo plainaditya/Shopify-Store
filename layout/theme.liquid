@@ -14,6 +14,27 @@
       try {
         localStorage.setItem('retrotick_theme', 'light');
       } catch(e) {}
+
+      // Casio watch click & URL redirection to homepage
+      (function() {
+        var path = window.location.pathname.toLowerCase();
+        if (path.indexOf('/products/') !== -1 && path.indexOf('casio') !== -1) {
+          window.location.replace("{{ routes.root_url }}");
+          return;
+        }
+
+        document.addEventListener('click', function(e) {
+          var casioTarget = e.target.closest('product-card[data-casio="true"], .rt-casio-home-link, a[href*="casio"]');
+          if (casioTarget) {
+            var interactive = e.target.closest('button:not(.product-card__link), input, select, textarea');
+            if (!interactive) {
+              e.preventDefault();
+              e.stopPropagation();
+              window.location.href = "{{ routes.root_url }}";
+            }
+          }
+        }, true);
+      })();
     </script>
     {%- if settings.favicon != blank -%}
       <link

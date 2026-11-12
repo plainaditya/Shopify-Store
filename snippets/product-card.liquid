@@ -54,17 +54,30 @@
     assign onboarding = true
   endif
 
+  assign is_casio = false
+  assign product_title_downcase = product.title | downcase
+  assign product_handle_downcase = product.handle | downcase
+  if product_title_downcase contains 'casio' or product_handle_downcase contains 'casio'
+    assign is_casio = true
+  endif
+
+  assign card_link_url = product.url
+  if is_casio
+    assign card_link_url = routes.root_url
+  endif
+
   if block_settings.background_color != blank
     render 'contrast-override', background_color: block_settings.background_color, text_color: block_settings.text_color, section_id: block.id
   endif
 %}
 
 <product-card
-  class="product-card size-style"
+  class="product-card size-style{% if is_casio %} rt-casio-card{% endif %}"
   style="{% render 'size-style', settings: block_settings %}"
   data-product-id="{{ product.id }}"
+  {% if is_casio %}data-casio="true" data-target-url="{{ routes.root_url }}"{% endif %}
   id="product-card-{{ block.id }}"
-  {% if settings.transition_to_main_product %}
+  {% if settings.transition_to_main_product and is_casio == false %}
     data-product-transition="true"
     data-featured-media-url="{{ featured_media_url }}"
     on:click="/handleViewTransition"
@@ -81,9 +94,9 @@
     id="{{ product_card_id | md5 }}"
     {% unless onboarding %}
       {% # Link to product.url so algorithmic variant relevance and tracking params are maintained. %}
-      href="{{ product.url }}"
+      href="{{ card_link_url }}"
     {% endunless %}
-    class="product-card__link"
+    class="product-card__link{% if is_casio %} rt-casio-home-link{% endif %}"
     ref="productCardLink"
     aria-label="{{ product.title | escape }}"
   ></a>

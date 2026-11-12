@@ -566,7 +566,14 @@ export class ProductCard extends ProductCardLink {
     }
 
     const link = this.refs.productCardLink;
-    if (!link.href) return;
+    if (!link || !link.href) return;
+
+    if (this.hasAttribute('data-casio') || link.classList.contains('rt-casio-home-link') || link.href.toLowerCase().includes('casio')) {
+      event.preventDefault();
+      window.location.href = window.Shopify?.routes?.root || '/';
+      return;
+    }
+
     const linkURL = new URL(link.href);
 
     const productCardAnchor = link.getAttribute('id');
