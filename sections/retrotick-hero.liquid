@@ -115,13 +115,13 @@
             <div class="rt-slide-caption">VIEW 03 // 316L STEEL BRACELET</div>
           </div>
 
-          <!-- Slide 3: Cyan EL Backlight Night Glow View -->
-          <div class="rt-slide-panel rt-slide-night" data-slide="3">
-            <div class="rt-img-frame rt-frame-glow">
+          <!-- Slide 3: Case & Side Profile (Renamed 4th View) -->
+          <div class="rt-slide-panel" data-slide="3">
+            <div class="rt-img-frame rt-frame-profile">
               {%- if product.images.size > 3 -%}
                 <img
                   src="{{ product.images[3] | image_url: width: 1200 }}"
-                  alt="Casio EL Backlight Glow"
+                  alt="Casio Case & Side Profile"
                   class="rt-stage-img"
                   loading="lazy"
                   width="800"
@@ -130,25 +130,39 @@
               {%- elsif main_img != blank -%}
                 <img
                   src="{{ main_img | image_url: width: 1200 }}"
-                  alt="Casio Night Glow"
-                  class="rt-stage-img rt-img-night-glow"
+                  alt="Casio Case & Side Profile"
+                  class="rt-stage-img"
                   loading="lazy"
                   width="800"
                   height="800"
                 >
               {%- else -%}
                 <img
-                  src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=1200&q=80"
-                  alt="Casio Night Backlight"
+                  src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80"
+                  alt="Casio Case & Side Profile"
                   class="rt-stage-img"
                   loading="lazy"
                   width="800"
                   height="800"
                 >
               {%- endif -%}
-              <div class="rt-el-glow-overlay"></div>
             </div>
-            <div class="rt-slide-caption rt-caption-glow">VIEW 04 // EL ILLUMINATOR NIGHT GLOW</div>
+            <div class="rt-slide-caption">VIEW 04 // CASE & PROFILE</div>
+          </div>
+
+          <!-- Slide 4: Cyan EL Backlight Night Glow (New 5th View) -->
+          <div class="rt-slide-panel rt-slide-night" data-slide="4">
+            <div class="rt-img-frame rt-frame-glow rt-frame-el-glow">
+              <img
+                src="{{ 'casio-el-backlight.jpg' | asset_url }}"
+                alt="Casio Vintage EL Night Backlight"
+                class="rt-stage-img rt-img-el-real"
+                loading="lazy"
+                width="800"
+                height="800"
+              >
+            </div>
+            <div class="rt-slide-caption rt-caption-glow">VIEW 05 // EL NIGHT BACKLIGHT</div>
           </div>
         </div>
 
@@ -166,10 +180,11 @@
           <button type="button" class="rt-dot-bar" data-index="1" aria-label="View 2"></button>
           <button type="button" class="rt-dot-bar" data-index="2" aria-label="View 3"></button>
           <button type="button" class="rt-dot-bar" data-index="3" aria-label="View 4"></button>
+          <button type="button" class="rt-dot-bar" data-index="4" aria-label="View 5"></button>
         </div>
       </div>
 
-      <!-- Visible Visual Thumbnails Row with Image Previews -->
+      <!-- Visible Visual Thumbnails Row with 5 Image Previews -->
       <div class="rt-thumb-gallery" id="RtThumbGallery">
         <button type="button" class="rt-thumb-card active" data-slide-target="0">
           <div class="rt-thumb-preview">
@@ -208,15 +223,22 @@
           <span class="rt-thumb-title">Steel Band</span>
         </button>
 
-        <button type="button" class="rt-thumb-card rt-thumb-card-glow" data-slide-target="3">
+        <button type="button" class="rt-thumb-card" data-slide-target="3">
           <div class="rt-thumb-preview">
             {%- if product.images.size > 3 -%}
-              <img src="{{ product.images[3] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Night Glow">
+              <img src="{{ product.images[3] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Profile">
             {%- elsif main_img != blank -%}
-              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Night Glow" style="filter: drop-shadow(0 0 8px #00f0ff);">
+              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Profile">
             {%- else -%}
-              <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=120&q=80" alt="Night Glow">
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=120&q=80" alt="Profile">
             {%- endif -%}
+          </div>
+          <span class="rt-thumb-title">Profile</span>
+        </button>
+
+        <button type="button" class="rt-thumb-card rt-thumb-card-glow" data-slide-target="4">
+          <div class="rt-thumb-preview">
+            <img src="{{ 'casio-el-backlight.jpg' | asset_url }}" alt="EL Glow">
           </div>
           <span class="rt-thumb-title">EL Glow 💡</span>
         </button>
@@ -264,16 +286,42 @@
         </div>
       </div>
 
-      <!-- Classy, High-Trust Price Box -->
+      <!-- Classy, High-Trust Price Box With Limited Time Deal Timer -->
       <div class="rt-price-box">
         <div class="rt-price-row">
-          <div class="rt-price-main">
-            <span class="rt-currency">₹</span><span class="rt-amount">999</span>
+          <div class="rt-price-left">
+            <div class="rt-price-main">
+              <span class="rt-currency">₹</span><span class="rt-amount">999</span>
+            </div>
+            <div class="rt-price-compare">
+              <span class="rt-mrp-label">M.R.P.</span>
+              <span class="rt-cut-price">₹1,999</span>
+              <span class="rt-discount-pill">50% OFF</span>
+            </div>
           </div>
-          <div class="rt-price-compare">
-            <span class="rt-mrp-label">M.R.P.</span>
-            <span class="rt-cut-price">₹1,999</span>
-            <span class="rt-discount-pill">50% OFF</span>
+
+          <!-- Limited Time Deal Urgency Timer Beside Price -->
+          <div class="rt-deal-timer-wrap" id="RtDealTimer" aria-label="Limited Time Offer Countdown">
+            <div class="rt-deal-timer-top">
+              <span class="rt-timer-fire">⚡</span>
+              <span class="rt-deal-timer-heading">SPECIAL PRICE EXPIRES IN</span>
+            </div>
+            <div class="rt-deal-countdown">
+              <div class="rt-count-box">
+                <span class="rt-count-num" id="RtTimerHours">02</span>
+                <span class="rt-count-lbl">H</span>
+              </div>
+              <span class="rt-count-sep">:</span>
+              <div class="rt-count-box">
+                <span class="rt-count-num" id="RtTimerMinutes">48</span>
+                <span class="rt-count-lbl">M</span>
+              </div>
+              <span class="rt-count-sep">:</span>
+              <div class="rt-count-box">
+                <span class="rt-count-num" id="RtTimerSeconds">35</span>
+                <span class="rt-count-lbl">S</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -400,6 +448,17 @@
         thumbs.forEach(function(t, i) {
           t.classList.toggle('active', i === currentSlide);
         });
+
+        if (glowBtn) {
+          var btnSpan = glowBtn.querySelector('span');
+          if (btnSpan) {
+            if (currentSlide === 4) {
+              btnSpan.textContent = 'EL Night Glow Active (Click to Return to Daylight)';
+            } else {
+              btnSpan.textContent = 'Click to test EL Night Backlight';
+            }
+          }
+        }
       }
 
       function next() {
@@ -442,8 +501,22 @@
         thumb.addEventListener('click', function(e) {
           e.preventDefault();
           var target = parseInt(this.getAttribute('data-slide-target'), 10);
+          if (target === 4) {
+            // 5th image: automatically turn on dark mode
+            document.documentElement.setAttribute('data-theme', 'dark');
+            try { localStorage.setItem('retrotick_theme', 'dark'); } catch(err) {}
+            var toggleInputs = document.querySelectorAll('#rt-theme-checkbox');
+            toggleInputs.forEach(function(inp) { inp.checked = true; });
+            stopAutoPlay();
+          } else {
+            // Daytime images (0, 1, 2, 3): return to light mode
+            document.documentElement.setAttribute('data-theme', 'light');
+            try { localStorage.setItem('retrotick_theme', 'light'); } catch(err) {}
+            var toggleInputs = document.querySelectorAll('#rt-theme-checkbox');
+            toggleInputs.forEach(function(inp) { inp.checked = false; });
+            startAutoPlay();
+          }
           showSlide(target);
-          startAutoPlay();
         });
       });
 
@@ -460,8 +533,24 @@
       if (glowBtn) {
         glowBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          showSlide(3); // Slide 3 is the Cyan Night Glow
-          startAutoPlay();
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          if (isDark && currentSlide === 4) {
+            // Return to light mode and slide 0
+            document.documentElement.setAttribute('data-theme', 'light');
+            try { localStorage.setItem('retrotick_theme', 'light'); } catch(err) {}
+            var toggleInputs = document.querySelectorAll('#rt-theme-checkbox');
+            toggleInputs.forEach(function(inp) { inp.checked = false; });
+            showSlide(0);
+            startAutoPlay();
+          } else {
+            // Automatically turn on dark mode
+            document.documentElement.setAttribute('data-theme', 'dark');
+            try { localStorage.setItem('retrotick_theme', 'dark'); } catch(err) {}
+            var toggleInputs = document.querySelectorAll('#rt-theme-checkbox');
+            toggleInputs.forEach(function(inp) { inp.checked = true; });
+            showSlide(4); // Slide 4 is the real Cyan EL Night Glow image
+            stopAutoPlay();
+          }
         });
       }
 
@@ -497,10 +586,52 @@
       startAutoPlay();
     }
 
+    function initCountdown() {
+      var hoursEl = document.getElementById('RtTimerHours');
+      var minsEl = document.getElementById('RtTimerMinutes');
+      var secsEl = document.getElementById('RtTimerSeconds');
+      if (!hoursEl || !minsEl || !secsEl) return;
+
+      var storageKey = 'rt_deal_timer_end';
+      var endTime = parseInt(localStorage.getItem(storageKey), 10);
+      var now = Date.now();
+      var duration = 2 * 3600 * 1000 + 47 * 60 * 1000 + 35 * 1000; // 2h 47m 35s
+
+      if (!endTime || isNaN(endTime) || endTime <= now) {
+        endTime = now + duration;
+        try { localStorage.setItem(storageKey, endTime); } catch(e) {}
+      }
+
+      function updateTimer() {
+        var remaining = Math.max(0, endTime - Date.now());
+        if (remaining <= 0) {
+          endTime = Date.now() + duration;
+          try { localStorage.setItem(storageKey, endTime); } catch(e) {}
+          remaining = duration;
+        }
+
+        var totalSecs = Math.floor(remaining / 1000);
+        var h = Math.floor(totalSecs / 3600);
+        var m = Math.floor((totalSecs % 3600) / 60);
+        var s = totalSecs % 60;
+
+        hoursEl.textContent = (h < 10 ? '0' : '') + h;
+        minsEl.textContent = (m < 10 ? '0' : '') + m;
+        secsEl.textContent = (s < 10 ? '0' : '') + s;
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initGallery);
+      document.addEventListener('DOMContentLoaded', function() {
+        initGallery();
+        initCountdown();
+      });
     } else {
       initGallery();
+      initCountdown();
     }
   })();
 </script>
