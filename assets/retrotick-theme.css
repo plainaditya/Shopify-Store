@@ -1288,18 +1288,20 @@ html[data-theme="light"] .rt-btn-buy-now {
   content: "";
   position: absolute;
   top: -50%;
-  left: -60%;
+  left: 0;
   width: 40%;
   height: 200%;
   background: rgba(255, 255, 255, 0.35);
-  transform: rotate(25deg);
+  transform: translateX(-180%) rotate(25deg);
   animation: rtShine 4s infinite;
+  will-change: transform;
+  pointer-events: none;
 }
 
 @keyframes rtShine {
-  0% { left: -60%; }
-  25% { left: 140%; }
-  100% { left: 140%; }
+  0% { transform: translateX(-180%) rotate(25deg); }
+  25% { transform: translateX(380%) rotate(25deg); }
+  100% { transform: translateX(380%) rotate(25deg); }
 }
 
 .rt-btn-buy-now:hover {

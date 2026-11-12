@@ -76,6 +76,8 @@
   href="{{ 'component.js' | asset_url }}"
   fetchpriority="low"
 >
+
+{% unless template.name == 'index' %}
 <link
   rel="modulepreload"
   href="{{ 'section-renderer.js' | asset_url }}"
@@ -91,6 +93,7 @@
   href="{{ 'morph.js' | asset_url }}"
   fetchpriority="low"
 >
+{% endunless %}
 
 {% if template.name == 'collection' or template.name == 'search' %}
   <link
@@ -110,6 +113,8 @@
   href="{{ 'focus.js' | asset_url }}"
   fetchpriority="low"
 >
+
+{% unless template.name == 'index' %}
 <link
   rel="modulepreload"
   href="{{ 'recently-viewed-products.js' | asset_url }}"
@@ -120,6 +125,8 @@
   href="{{ 'scrolling.js' | asset_url }}"
   fetchpriority="low"
 >
+{% endunless %}
+
 <link
   rel="modulepreload"
   href="{{ 'events.js' | asset_url }}"
@@ -158,6 +165,13 @@
   fetchpriority="low"
 ></script>
 <script
+  src="{{ 'fly-to-cart.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% unless template.name == 'index' %}
+<script
   src="{{ 'variant-picker.js' | asset_url }}"
   type="module"
   fetchpriority="low"
@@ -169,11 +183,6 @@
 ></script>
 <script
   src="{{ 'product-form.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-<script
-  src="{{ 'fly-to-cart.js' | asset_url }}"
   type="module"
   fetchpriority="low"
 ></script>
@@ -262,6 +271,7 @@
   type="module"
   fetchpriority="low"
 ></script>
+{% endunless %}
 
 {% if localization.available_countries.size > 1 or localization.available_languages.size > 1 %}
   <script

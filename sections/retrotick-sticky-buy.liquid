@@ -39,23 +39,53 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const stickyBar = document.getElementById('RtStickyBar');
-    const heroSection = document.getElementById('TheWatch');
+  (function() {
+    function initStickyBar() {
+      const stickyBar = document.getElementById('RtStickyBar');
+      const heroSection = document.getElementById('TheWatch');
 
-    if (!stickyBar || !heroSection) return;
+      if (!stickyBar || !heroSection) return;
 
-    window.addEventListener('scroll', function() {
-      const heroBottom = heroSection.getBoundingClientRect().bottom;
-      if (heroBottom < 100) {
-        stickyBar.classList.add('visible');
-        stickyBar.setAttribute('aria-hidden', 'false');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+              stickyBar.classList.add('visible');
+              stickyBar.setAttribute('aria-hidden', 'false');
+            } else {
+              stickyBar.classList.remove('visible');
+              stickyBar.setAttribute('aria-hidden', 'true');
+            }
+          });
+        }, { threshold: [0], rootMargin: '-60px 0px 0px 0px' });
+        observer.observe(heroSection);
       } else {
-        stickyBar.classList.remove('visible');
-        stickyBar.setAttribute('aria-hidden', 'true');
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+          if (!ticking) {
+            window.requestAnimationFrame(function() {
+              const heroBottom = heroSection.getBoundingClientRect().bottom;
+              if (heroBottom < 100) {
+                stickyBar.classList.add('visible');
+                stickyBar.setAttribute('aria-hidden', 'false');
+              } else {
+                stickyBar.classList.remove('visible');
+                stickyBar.setAttribute('aria-hidden', 'true');
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
       }
-    }, { passive: true });
-  });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initStickyBar);
+    } else {
+      initStickyBar();
+    }
+  })();
 </script>
 
 {% schema %}

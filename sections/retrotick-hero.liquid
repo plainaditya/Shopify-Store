@@ -471,6 +471,28 @@
         wrapper.addEventListener('mouseleave', startAutoPlay);
       }
 
+      // Pause when tab is hidden or when gallery is scrolled out of viewport
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          stopAutoPlay();
+        } else {
+          startAutoPlay();
+        }
+      });
+
+      if ('IntersectionObserver' in window && wrapper) {
+        var heroObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              startAutoPlay();
+            } else {
+              stopAutoPlay();
+            }
+          });
+        }, { threshold: 0.1 });
+        heroObserver.observe(wrapper);
+      }
+
       // Start automatic movement
       startAutoPlay();
     }
