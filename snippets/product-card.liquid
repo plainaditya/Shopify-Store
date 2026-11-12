@@ -137,6 +137,28 @@
 
     {{ children }}
 
+    {%- assign card_desc = '' -%}
+    {%- if product.metafields.custom.short_description != blank -%}
+      {%- assign card_desc = product.metafields.custom.short_description -%}
+    {%- elsif product.description != blank -%}
+      {%- assign card_desc = product.description | strip_html | truncate: 80 -%}
+    {%- endif -%}
+
+    {%- if card_desc == blank -%}
+      {%- assign title_lower = product.title | downcase -%}
+      {%- if title_lower contains 'casio' -%}
+        {%- assign card_desc = 'Iconic 1980s Japanese digital timepiece with brushed vintage steel bracelet.' -%}
+      {%- elsif title_lower contains 'women' or title_lower contains 'fancy' -%}
+        {%- assign card_desc = 'Delicate crystal-accented bezel with polished rose gold tone multi-link bracelet.' -%}
+      {%- elsif title_lower contains 'arabic' or title_lower contains 'matte' -%}
+        {%- assign card_desc = 'Stealth architectural matte black casing with Eastern Arabic numerals.' -%}
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if card_desc != blank -%}
+      <p class="rt-card-short-desc">{{ card_desc }}</p>
+    {%- endif -%}
+
     <div class="rt-card-trust-footer">
       <span class="rt-card-footer-item">⚡ 24h Dispatch</span>
       <span class="rt-card-footer-dot">•</span>
