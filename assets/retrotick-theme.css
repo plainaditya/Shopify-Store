@@ -2382,6 +2382,7 @@ footer {
 }
 
 /* Footer Legal & Customer Support details */
+[class*="text_f9CFLH"] p,
 .rt-footer-legal-copy,
 .rt-footer-support-copy {
   font-size: 0.8125rem !important;
@@ -2390,10 +2391,12 @@ footer {
   text-align: left !important;
 }
 
+[class*="text_f9CFLH"] strong,
 .rt-footer-legal-biz {
   font-weight: 600 !important;
 }
 
+[class*="text_f9CFLH"] a,
 .rt-footer-support-copy a {
   text-decoration: underline !important;
   text-underline-offset: 3px !important;
@@ -2404,6 +2407,40 @@ footer {
 .footer-copyright,
 .footer-utilities__group-copyright {
   display: none !important;
+}
+
+/* Center Terms and Policies in footer */
+.utilities,
+.utilities--blocks-1,
+.utilities--blocks-2,
+.utilities--blocks-3 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.utilities > *,
+.utilities--blocks-1 > *,
+.utilities--blocks-2 > *,
+.utilities--blocks-3 > * {
+  justify-self: center !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+anchored-popover-component,
+.utilities anchored-popover-component,
+.policy-list-trigger {
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin: 0 auto !important;
 }
 
 html[data-theme="light"] .footer,

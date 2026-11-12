@@ -98,7 +98,11 @@
   </div>
 {% elsif plain_text != blank %}
   <{{ element }} {{ attributes | strip_newlines | strip }}>
-    {{ block.settings.text }}
+    {% if block.id contains 'text_f9CFLH' or block.settings.text contains 'care@retrotick.in' %}
+      <p class="rt-footer-legal-copy">&copy; 2026 Retrotick.in<br>Owned and operated by Dabh India<br><strong class="rt-footer-legal-biz">Legal Business Name: Dabh India</strong></p><p class="rt-footer-support-copy">Customer Support: <a href="tel:+919211297090">+91 9211297090</a><br>Email: <a href="mailto:q21qq12q@gmail.com">q21qq12q@gmail.com</a><br>Support Hours: Mon-Sat, 10:00 AM - 6:00 PM</p>
+    {% else %}
+      {{ block.settings.text }}
+    {% endif %}
   </{{ element }}>
 {% endif %}
 
