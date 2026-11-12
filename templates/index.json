@@ -14,10 +14,6 @@
       "type": "retrotick-features",
       "settings": {}
     },
-    "retrotick_unisex": {
-      "type": "retrotick-unisex-lifestyle",
-      "settings": {}
-    },
     "retrotick_specs": {
       "type": "retrotick-specs",
       "settings": {}
@@ -34,7 +30,6 @@
   "order": [
     "retrotick_hero",
     "retrotick_features",
-    "retrotick_unisex",
     "retrotick_specs",
     "retrotick_reviews",
     "retrotick_sticky"
