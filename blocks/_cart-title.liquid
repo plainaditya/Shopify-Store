@@ -24,21 +24,49 @@
   {{ block.shopify_attributes }}
 >
   {%- unless cart.empty? or force_empty -%}
-    <div class="rt-cart-badge-wrap">
-      <span class="rt-section-badge">✦ DISPATCH QUEUE // RETROTICK.IN</span>
+    <div class="rt-cart-header-top">
+      <div class="rt-cart-stepper">
+        <div class="rt-step rt-step--active">
+          <span class="rt-step-dot"></span>
+          <span class="rt-step-num">01</span>
+          <span class="rt-step-text">BAG</span>
+        </div>
+        <div class="rt-step-line"></div>
+        <div class="rt-step rt-step--muted">
+          <span class="rt-step-dot"></span>
+          <span class="rt-step-num">02</span>
+          <span class="rt-step-text">CHECKOUT</span>
+        </div>
+        <div class="rt-step-line"></div>
+        <div class="rt-step rt-step--muted">
+          <span class="rt-step-dot"></span>
+          <span class="rt-step-num">03</span>
+          <span class="rt-step-text">CONFIRMATION</span>
+        </div>
+      </div>
     </div>
   {%- endunless -%}
-  <h1 class="{{ block_settings.type_preset | default: 'h2' }} rt-cart-main-title">
-    {%- if cart.empty? or force_empty -%}
-      {{ 'content.your_cart_is_empty' | t }}
-    {%- else -%}
-      Review Your Timepieces
-      {%- if block_settings.show_count -%}{% render 'cart-bubble' %}{%- endif -%}
-    {%- endif -%}
-  </h1>
+
+  <div class="rt-cart-title-row">
+    <h1 class="rt-cart-main-title">
+      {%- if cart.empty? or force_empty -%}
+        {{ 'content.your_cart_is_empty' | t }}
+      {%- else -%}
+        Your Shopping Bag
+        <span class="rt-cart-counter-pill">{{ cart.item_count }} {{ cart.item_count | pluralize: 'ITEM', 'ITEMS' }}</span>
+      {%- endif -%}
+    </h1>
+    {%- unless cart.empty? or force_empty -%}
+      <div class="rt-cart-security-badge">
+        <span class="rt-sec-dot"></span>
+        <span>Insured Air Express • Delhi Warehouse</span>
+      </div>
+    {%- endunless -%}
+  </div>
+
   {%- unless cart.empty? or force_empty -%}
     <p class="rt-cart-sub-desc">
-      All timepieces undergo multi-point inspection prior to packaging. Orders dispatch in 24h.
+      Every timepiece undergoes calibration and cosmetic inspection before sealed dispatch.
     </p>
   {%- endunless -%}
 </div>

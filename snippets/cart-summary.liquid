@@ -9,18 +9,33 @@
 {% render 'cart-typography-styles' %}
 
 <div class="cart-totals">
+  <div class="rt-summary-card-header">
+    <span class="rt-summary-title">ORDER SUMMARY</span>
+    <span class="rt-secure-pill">🔒 SSL SECURED</span>
+  </div>
+
+  <div class="rt-summary-breakdown">
+    <div class="rt-summary-line">
+      <span class="rt-summary-line-label">Bag Subtotal ({{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }})</span>
+      <span class="rt-summary-line-val"><bdi>{{ cart.items_subtotal_price | money }}</bdi></span>
+    </div>
+    <div class="rt-summary-line">
+      <span class="rt-summary-line-label">Insured Air Express Delivery</span>
+      <span class="rt-summary-line-val rt-text-free">FREE <s class="rt-strike-val">₹150</s></span>
+    </div>
+    <div class="rt-summary-line">
+      <span class="rt-summary-line-label">Cash on Delivery (COD) Fee</span>
+      <span class="rt-summary-line-val rt-text-free">FREE <s class="rt-strike-val">₹90</s></span>
+    </div>
+    <div class="rt-summary-line">
+      <span class="rt-summary-line-label">Estimated GST / Duties</span>
+      <span class="rt-summary-line-val rt-text-muted">Included</span>
+    </div>
+  </div>
+
   {% # We need to keep this node in place to allow morphing to work properly # %}
   <div class="cart-totals__original-container cart-primary-typography">
     {%- if cart.cart_level_discount_applications.size > 0 -%}
-      <span class="cart-totals__item cart-totals__original">
-        <span class="cart-totals__original-label">{{ 'content.cart_subtotal' | t }}</span>
-        <span
-          class="cart-totals__original-value cart-secondary-typography"
-          data-testid="cart-subtotal-value"
-        >
-          <bdi>{{- cart.items_subtotal_price | money -}}</bdi>
-        </span>
-      </span>
       <ul
         class="cart-discounts"
         role="list"
@@ -223,22 +238,24 @@
   -%}
 
   <div class="cart-totals__container{% if settings.show_installments %} cart-totals__container--has-installments{% endif %}">
-    <span
-      class="cart-totals__item cart-totals__total"
+    <div
+      class="cart-totals__item cart-totals__total rt-summary-total-bar"
       role="status"
     >
-      <span class="cart-totals__total-label cart-primary-typography">{{ 'content.cart_estimated_total' | t }}</span>
+      <div class="rt-total-left">
+        <span class="cart-totals__total-label rt-total-main-label">Estimated Total</span>
+        <small class="rt-total-sub-note">Free Insured Delivery • Zero COD Fee</small>
+      </div>
       <text-component
         ref="cartTotal"
         value="{{ total_price | strip_html }}"
-        class="cart-totals__total-value cart-secondary-typography"
-        {% comment %} Used by payment_terms web component {% endcomment %}
+        class="cart-totals__total-value rt-total-price-nowrap"
         data-testid="cart-total-value"
         data-cart-subtotal
       >
         <bdi>{{ total_price }}</bdi>
       </text-component>
-    </span>
+    </div>
     {% if settings.show_installments %}
       <span class="cart-totals__item cart-totals__installments">
         {% form 'cart', cart %}
@@ -246,9 +263,6 @@
         {% endform %}
       </span>
     {% endif %}
-    <div class="cart-totals__item cart-totals__tax-note cart-primary-typography">
-      {% render 'tax-info', has_discounts_enabled: settings.show_add_discount_code %}
-    </div>
   </div>
 </div>
 
@@ -256,16 +270,18 @@
   <button
     type="submit"
     id="checkout"
-    class="cart__checkout-button button"
+    class="cart__checkout-button rt-checkout-cta button"
     name="checkout"
     {% if cart == empty %}
       disabled
     {% endif %}
     form="cart-form"
   >
-    <span class="button-text">
-      PROCEED TO CHECKOUT ➔
+    <span class="rt-cta-inner">
+      <span class="rt-cta-text">PROCEED TO CHECKOUT</span>
+      <span class="rt-cta-arrow">➔</span>
     </span>
+    <span class="rt-cta-glow"></span>
   </button>
 
   {% if additional_checkout_buttons and settings.show_accelerated_checkout_buttons %}
@@ -282,10 +298,10 @@
 
 <div class="rt-cart-trust-box">
   <div class="rt-cart-trust-row">
-    <span class="rt-trust-icon">🔒</span>
+    <span class="rt-trust-icon">🛡️</span>
     <div>
-      <strong>256-Bit SSL Encrypted Checkout</strong>
-      <small>Bank-grade secure transactions</small>
+      <strong>100% Original Casio Vintage Steel</strong>
+      <small>Authentic packaging & inspected caseback</small>
     </div>
   </div>
   <div class="rt-cart-trust-row">
@@ -299,7 +315,7 @@
     <span class="rt-trust-icon">🔄</span>
     <div>
       <strong>30-Day Hassle-Free Replacement</strong>
-      <small>Zero friction exchange for transit defects</small>
+      <small>Instant zero-cost exchange for transit defects</small>
     </div>
   </div>
   <div class="rt-cart-trust-row">
