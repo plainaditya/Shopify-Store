@@ -2378,7 +2378,32 @@ footer,
 }
 
 footer {
-  padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: calc(105px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+/* Footer Legal & Customer Support details */
+.rt-footer-legal-copy,
+.rt-footer-support-copy {
+  font-size: 0.8125rem !important;
+  line-height: 1.65 !important;
+  margin: 0 0 10px 0 !important;
+  text-align: left !important;
+}
+
+.rt-footer-legal-biz {
+  font-weight: 600 !important;
+}
+
+.rt-footer-support-copy a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: color 0.2s ease !important;
+}
+
+/* Suppress duplicate copyright block if rendered */
+.footer-copyright,
+.footer-utilities__group-copyright {
+  display: none !important;
 }
 
 html[data-theme="light"] .footer,
@@ -2390,13 +2415,30 @@ html[data-theme="light"] footer {
 
 html[data-theme="light"] .footer h2,
 html[data-theme="light"] .footer h3,
-html[data-theme="light"] .footer h4,
+html[data-theme="light"] .footer h4 {
+  color: #0c0d12 !important;
+}
+
 html[data-theme="light"] .footer a {
   color: #0c0d12 !important;
 }
 
-html[data-theme="light"] .footer p {
+html[data-theme="light"] .footer p,
+html[data-theme="light"] .rt-footer-legal-copy,
+html[data-theme="light"] .rt-footer-support-copy {
   color: #525a66 !important;
+}
+
+html[data-theme="light"] .rt-footer-legal-biz {
+  color: #1f2937 !important;
+}
+
+html[data-theme="light"] .rt-footer-support-copy a {
+  color: #1f2937 !important;
+}
+
+html[data-theme="light"] .rt-footer-support-copy a:hover {
+  color: #0284c7 !important;
 }
 
 html[data-theme="light"] .utilities a,
@@ -2414,13 +2456,30 @@ html[data-theme="dark"] .footer {
 
 html[data-theme="dark"] .footer h2,
 html[data-theme="dark"] .footer h3,
-html[data-theme="dark"] .footer h4,
+html[data-theme="dark"] .footer h4 {
+  color: #f5f7fa !important;
+}
+
 html[data-theme="dark"] .footer a {
   color: #f5f7fa !important;
 }
 
-html[data-theme="dark"] .footer p {
-  color: #a0aec0 !important;
+html[data-theme="dark"] .footer p,
+html[data-theme="dark"] .rt-footer-legal-copy,
+html[data-theme="dark"] .rt-footer-support-copy {
+  color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .rt-footer-legal-biz {
+  color: #f1f5f9 !important;
+}
+
+html[data-theme="dark"] .rt-footer-support-copy a {
+  color: #e2e8f0 !important;
+}
+
+html[data-theme="dark"] .rt-footer-support-copy a:hover {
+  color: var(--rt-cyan-glow, #00f0ff) !important;
 }
 
 html[data-theme="dark"] .utilities a,
