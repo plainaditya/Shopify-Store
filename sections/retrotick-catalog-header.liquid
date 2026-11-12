@@ -1,0 +1,59 @@
+<div class="rt-catalog-hero" id="RtCatalogHero">
+  <div class="rt-catalog-glow rt-catalog-glow-1" aria-hidden="true"></div>
+  <div class="rt-catalog-glow rt-catalog-glow-2" aria-hidden="true"></div>
+
+  <div class="rt-catalog-container">
+    <div class="rt-catalog-breadcrumb">
+      <a href="{{ routes.root_url }}" class="rt-breadcrumb-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>HOME</span>
+      </a>
+      <span class="rt-breadcrumb-sep">//</span>
+      <span class="rt-breadcrumb-current">TIMEPIECE ARCHIVE</span>
+    </div>
+
+    <div class="rt-catalog-badge-wrap">
+      <span class="rt-section-badge">✦ CURATED TIMEPIECE ARCHIVE // RETROTICK.IN</span>
+    </div>
+
+    <h1 class="rt-catalog-title">
+      {%- if collection.title != blank and collection.title != 'Products' -%}
+        {{ collection.title }}
+      {%- else -%}
+        The Vintage Steel Collection
+      {%- endif -%}
+    </h1>
+
+    <p class="rt-catalog-subtitle">
+      {%- if collection.description != blank -%}
+        {{ collection.description }}
+      {%- else -%}
+        Curating authentic Japanese vintage timepieces and precision steel aesthetics. Every watch is verified authentic, tested, and backed by our 30-day replacement guarantee with Cash on Delivery across India.
+      {%- endif -%}
+    </p>
+
+    <div class="rt-catalog-pills">
+      <div class="rt-live-status-pill">
+        <span class="rt-live-dot"></span>
+        <span class="rt-live-text">100% ORIGINAL JAPANESE MOVEMENTS</span>
+        <span class="rt-live-sep">•</span>
+        <span class="rt-live-sub">Dispatched Under 24h</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Retrotick Catalog Header",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Retrotick Catalog Header"
+    }
+  ]
+}
+{% endschema %}

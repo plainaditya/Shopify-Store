@@ -125,7 +125,25 @@
       {% if block_settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block_settings.padding-block-end | times: 0.7}}px);{% endif %}
     "
   >
+    {% if is_casio %}
+      <div class="rt-card-floating-badge rt-badge-casio">
+        <span class="rt-badge-star">★</span> FLAGSHIP // CASIO STEEL
+      </div>
+    {% else %}
+      <div class="rt-card-floating-badge">
+        <span>COD AVAILABLE</span>
+      </div>
+    {% endif %}
+
     {{ children }}
+
+    <div class="rt-card-trust-footer">
+      <span class="rt-card-footer-item">⚡ 24h Dispatch</span>
+      <span class="rt-card-footer-dot">•</span>
+      <span class="rt-card-footer-item">🚚 Pan-India COD</span>
+      <span class="rt-card-footer-dot">•</span>
+      <span class="rt-card-footer-item">🛡️ Authentic</span>
+    </div>
   </div>
 </product-card>
 
