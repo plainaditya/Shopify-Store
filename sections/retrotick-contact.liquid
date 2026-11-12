@@ -1,0 +1,472 @@
+{%- liquid
+  assign badge_text = section.settings.badge_text | default: "✦ DIRECT CONCIERGE & SUPPORT // RETROTICK.IN"
+  assign title = section.settings.title | default: "How Can We Help You Today?"
+  assign subtitle = section.settings.subtitle | default: "Have questions regarding your Casio Vintage Steel order, sizing, or express COD dispatch tracking? Our dedicated support team is available 6 days a week."
+  assign phone = section.settings.phone | default: "+91 9211297090"
+  assign whatsapp = section.settings.whatsapp | default: "+91 9211297090"
+  assign email = section.settings.email | default: "q21qq12q@gmail.com"
+  assign hours = section.settings.hours | default: "Mon - Sat: 10:00 AM – 6:00 PM IST"
+  assign legal_biz = section.settings.legal_biz | default: "Dabh India"
+-%}
+
+<section class="rt-contact-page" id="RtContactPage">
+  <!-- Ambient background glow elements -->
+  <div class="rt-contact-glow rt-contact-glow-1" aria-hidden="true"></div>
+  <div class="rt-contact-glow rt-contact-glow-2" aria-hidden="true"></div>
+
+  <div class="rt-contact-container">
+    <!-- Top Nav / Breadcrumbs -->
+    <div class="rt-contact-breadcrumb">
+      <a href="{{ routes.root_url }}" class="rt-breadcrumb-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>BACK TO STORE</span>
+      </a>
+      <span class="rt-breadcrumb-sep">//</span>
+      <span class="rt-breadcrumb-current">CONCIERGE & INQUIRIES</span>
+    </div>
+
+    <!-- Header / Hero Section -->
+    <div class="rt-contact-header">
+      <div class="rt-contact-badge-wrap">
+        <span class="rt-section-badge">{{ badge_text }}</span>
+      </div>
+      <h1 class="rt-contact-title">{{ title }}</h1>
+      <p class="rt-contact-subtitle">{{ subtitle }}</p>
+
+      <div class="rt-live-status-pill">
+        <span class="rt-live-dot"></span>
+        <span class="rt-live-text">CONCIERGE ACTIVE</span>
+        <span class="rt-live-sep">•</span>
+        <span class="rt-live-sub">Avg. Response Time: Under 2 Hours</span>
+      </div>
+
+      {%- if page.content != blank -%}
+        <div class="rt-page-custom-content rte">
+          {{ page.content }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Main Two-Column Grid -->
+    <div class="rt-contact-grid">
+      <!-- LEFT COLUMN: Direct Support Channels & Brand Details -->
+      <div class="rt-contact-info-col">
+        <!-- Direct Channels Card -->
+        <div class="rt-info-card rt-channels-card">
+          <div class="rt-card-top">
+            <span class="rt-card-tag">DIRECT ASSISTANCE</span>
+            <h3 class="rt-card-heading">Contact Channels</h3>
+          </div>
+
+          <div class="rt-channels-list">
+            <!-- Channel 1: WhatsApp (Primary & Fastest) -->
+            <a href="https://wa.me/919211297090?text=Hi%20Retrotick%2C%20I%20have%20an%20inquiry%20regarding%20my%20order" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="rt-channel-item rt-channel-whatsapp">
+              <div class="rt-channel-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+              </div>
+              <div class="rt-channel-details">
+                <div class="rt-channel-meta">
+                  <span class="rt-channel-label">WHATSAPP CHAT</span>
+                  <span class="rt-channel-pill rt-pill-fast">FASTEST RESPONSE</span>
+                </div>
+                <div class="rt-channel-value">{{ whatsapp }}</div>
+                <div class="rt-channel-hint">Instant updates on tracking, dispatch & COD</div>
+              </div>
+              <div class="rt-channel-arrow">➔</div>
+            </a>
+
+            <!-- Channel 2: Phone Hotline -->
+            <a href="tel:{{ phone | replace: ' ', '' }}" class="rt-channel-item rt-channel-phone">
+              <div class="rt-channel-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="rt-channel-details">
+                <div class="rt-channel-meta">
+                  <span class="rt-channel-label">PHONE SUPPORT</span>
+                </div>
+                <div class="rt-channel-value">{{ phone }}</div>
+                <div class="rt-channel-hint">Direct line to our customer care desk</div>
+              </div>
+              <div class="rt-channel-arrow">➔</div>
+            </a>
+
+            <!-- Channel 3: Email Support -->
+            <a href="mailto:{{ email }}" class="rt-channel-item rt-channel-email">
+              <div class="rt-channel-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="rt-channel-details">
+                <div class="rt-channel-meta">
+                  <span class="rt-channel-label">SUPPORT EMAIL</span>
+                </div>
+                <div class="rt-channel-value">{{ email }}</div>
+                <div class="rt-channel-hint">For order modifications, returns & corporate inquiries</div>
+              </div>
+              <div class="rt-channel-arrow">➔</div>
+            </a>
+          </div>
+
+          <!-- Business Legal & Hours Footer in Card -->
+          <div class="rt-card-meta-footer">
+            <div class="rt-meta-row">
+              <div class="rt-meta-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div>
+                <strong>Support Hours:</strong> {{ hours }}
+              </div>
+            </div>
+            <div class="rt-meta-row">
+              <div class="rt-meta-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="2" width="18" height="20" rx="2" ry="2"></rect>
+                  <line x1="9" y1="22" x2="9" y2="2"></line>
+                </svg>
+              </div>
+              <div>
+                <strong>Owned & Operated by:</strong> {{ legal_biz }}
+                <div class="rt-meta-sub">Legal Business Name: <strong>{{ legal_biz }}</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guarantees & Buyer Protection Mini-Grid -->
+        <div class="rt-guarantees-grid">
+          <div class="rt-guarantee-pill">
+            <span class="rt-g-icon">⚡</span>
+            <div>
+              <strong>Dispatch Under 24h</strong>
+              <small>Express air couriers with live SMS updates</small>
+            </div>
+          </div>
+          <div class="rt-guarantee-pill">
+            <span class="rt-g-icon">🚚</span>
+            <div>
+              <strong>COD Available Across India</strong>
+              <small>Zero advance required. Pay at your door</small>
+            </div>
+          </div>
+          <div class="rt-guarantee-pill">
+            <span class="rt-g-icon">🔄</span>
+            <div>
+              <strong>30-Day Hassle-Free Exchange</strong>
+              <small>Instant replacement for transit damage</small>
+            </div>
+          </div>
+          <div class="rt-guarantee-pill">
+            <span class="rt-g-icon">🛡️</span>
+            <div>
+              <strong>100% Genuine Casio Steel</strong>
+              <small>Authentic Japanese digital quartz movement</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: High-End Contact Form -->
+      <div class="rt-contact-form-col">
+        <div class="rt-form-card">
+          <div class="rt-form-header">
+            <div class="rt-form-title-wrap">
+              <span class="rt-card-tag">SECURE TRANSMISSION</span>
+              <h2 class="rt-form-title">Send a Direct Message</h2>
+              <p class="rt-form-sub">We reply swiftly via Email or WhatsApp. Please provide as much detail as possible.</p>
+            </div>
+          </div>
+
+          {%- form 'contact', id: 'RtContactForm', class: 'rt-actual-form' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="rt-alert rt-alert-success" role="alert" tabindex="-1" autofocus>
+                <div class="rt-alert-icon">✓</div>
+                <div>
+                  <strong>Message Transmitted Successfully!</strong>
+                  <p>Thank you for reaching out to Retrotick. Our concierge support team has received your message and will respond via email or WhatsApp within 2 hours.</p>
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- if form.errors -%}
+              <div class="rt-alert rt-alert-error" role="alert" tabindex="-1" autofocus>
+                <div class="rt-alert-icon">⚠</div>
+                <div>
+                  <strong>Please Check The Highlighted Fields:</strong>
+                  <ul>
+                    {%- for field in form.errors -%}
+                      <li>
+                        {{ form.errors.translated_fields[field] | capitalize }}
+                        {{ form.errors.messages[field] }}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            {%- endif -%}
+
+            <!-- Department / Inquiry Type Picker -->
+            <div class="rt-form-group">
+              <label class="rt-field-label" for="RtInquiryType">WHAT CAN WE HELP YOU WITH?</label>
+              <div class="rt-select-wrapper">
+                <select name="contact[Inquiry_Type]" id="RtInquiryType" class="rt-form-select">
+                  <option value="Order Tracking & COD Status" selected>📦 Track My Order / Cash on Delivery Status</option>
+                  <option value="Product Details & Sizing">⌚ Product Specifications & Wrist Sizing</option>
+                  <option value="Exchange or Return Request">🔄 30-Day Exchange / Return Request</option>
+                  <option value="Cancel or Edit Order Address">✏️ Cancel or Edit Shipping Address</option>
+                  <option value="General Brand Inquiry">💬 General Question / Partnership</option>
+                </select>
+                <span class="rt-select-arrow">▼</span>
+              </div>
+            </div>
+
+            <!-- Row 1: Name and Email -->
+            <div class="rt-form-row">
+              <div class="rt-form-group">
+                <label class="rt-field-label" for="RtContactName">YOUR FULL NAME <span class="rt-req">*</span></label>
+                <div class="rt-input-wrapper">
+                  <input
+                    type="text"
+                    id="RtContactName"
+                    name="contact[name]"
+                    class="rt-form-input"
+                    autocomplete="name"
+                    placeholder="e.g. Vikram Sharma"
+                    required
+                    value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                  >
+                </div>
+              </div>
+
+              <div class="rt-form-group">
+                <label class="rt-field-label" for="RtContactEmail">EMAIL ADDRESS <span class="rt-req">*</span></label>
+                <div class="rt-input-wrapper">
+                  <input
+                    type="email"
+                    id="RtContactEmail"
+                    name="contact[email]"
+                    class="rt-form-input"
+                    autocomplete="email"
+                    spellcheck="false"
+                    autocapitalize="off"
+                    placeholder="e.g. vikram@gmail.com"
+                    required
+                    value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 2: Phone Number and Order ID -->
+            <div class="rt-form-row">
+              <div class="rt-form-group">
+                <label class="rt-field-label" for="RtContactPhone">PHONE / WHATSAPP NUMBER</label>
+                <div class="rt-input-wrapper rt-phone-wrapper">
+                  <span class="rt-phone-prefix">🇮🇳 +91</span>
+                  <input
+                    type="tel"
+                    id="RtContactPhone"
+                    name="contact[phone]"
+                    class="rt-form-input rt-input-prefixed"
+                    autocomplete="tel"
+                    pattern="[0-9\s\-+]*"
+                    placeholder="98765 43210"
+                    value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                  >
+                </div>
+              </div>
+
+              <div class="rt-form-group">
+                <label class="rt-field-label" for="RtContactOrder">ORDER NUMBER <span class="rt-optional">(OPTIONAL)</span></label>
+                <div class="rt-input-wrapper">
+                  <input
+                    type="text"
+                    id="RtContactOrder"
+                    name="contact[Order_Number]"
+                    class="rt-form-input"
+                    placeholder="e.g. #RT-1048"
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Message Area -->
+            <div class="rt-form-group">
+              <label class="rt-field-label" for="RtContactBody">HOW CAN WE ASSIST YOU? <span class="rt-req">*</span></label>
+              <div class="rt-input-wrapper">
+                <textarea
+                  id="RtContactBody"
+                  name="contact[body]"
+                  rows="5"
+                  class="rt-form-textarea"
+                  placeholder="Provide your order details, questions about the Casio Vintage watch, or address adjustments..."
+                  required
+                >{{- form.body -}}</textarea>
+              </div>
+            </div>
+
+            <!-- Submit Button & Security Reassurance -->
+            <div class="rt-form-actions">
+              <button type="submit" class="rt-submit-btn" id="RtSubmitBtn">
+                <span class="rt-submit-text">TRANSMIT MESSAGE</span>
+                <span class="rt-submit-arrow">➔</span>
+              </button>
+
+              <div class="rt-form-security-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>SSL Secured & Encrypted • Your private details are never shared</span>
+              </div>
+            </div>
+          {%- endform -%}
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM SECTION: Frequently Asked Questions -->
+    {%- if section.settings.show_faq -%}
+      <div class="rt-contact-faq-section">
+        <div class="rt-faq-header">
+          <span class="rt-section-badge">IMMEDIATE RESOLUTION</span>
+          <h2 class="rt-faq-title">Frequently Asked Questions</h2>
+          <p class="rt-faq-sub">Quick answers to common questions about delivery, authenticity, and sizing.</p>
+        </div>
+
+        <div class="rt-faq-grid">
+          <details class="rt-faq-item" open>
+            <summary class="rt-faq-question">
+              <span>When will my order be dispatched and delivered?</span>
+              <span class="rt-faq-chevron">+</span>
+            </summary>
+            <div class="rt-faq-answer">
+              <p>All orders placed before 2:00 PM IST are processed and handed to our premium express air partners (Bluedart, Delhivery, Xpressbees) within 24 hours. Metro deliveries typically arrive in 2 to 3 days, while rest of India arrives in 3 to 5 business days. You will receive real-time SMS & WhatsApp tracking links as soon as your parcel is on the move.</p>
+            </div>
+          </details>
+
+          <details class="rt-faq-item">
+            <summary class="rt-faq-question">
+              <span>How does Cash on Delivery (COD) payment work?</span>
+              <span class="rt-faq-chevron">+</span>
+            </summary>
+            <div class="rt-faq-answer">
+              <p>Cash on Delivery requires zero upfront payment. When the delivery executive arrives at your doorstep, you can conveniently pay via Cash or scan a dynamic UPI QR code (Google Pay, PhonePe, Paytm). There are no hidden COD convenience charges.</p>
+            </div>
+          </details>
+
+          <details class="rt-faq-item">
+            <summary class="rt-faq-question">
+              <span>Is this timepiece 100% genuine and authentic Casio?</span>
+              <span class="rt-faq-chevron">+</span>
+            </summary>
+            <div class="rt-faq-answer">
+              <p>Yes, 100% guaranteed. Our watches feature the authentic Casio Japanese digital quartz module, stainless steel casing with engraved serial caseback, original fold-over steel clasp, and the signature high-intensity ElectroLuminescent (EL) cyan night backlight panel.</p>
+            </div>
+          </details>
+
+          <details class="rt-faq-item">
+            <summary class="rt-faq-question">
+              <span>Can I adjust the stainless steel bracelet at home?</span>
+              <span class="rt-faq-chevron">+</span>
+            </summary>
+            <div class="rt-faq-answer">
+              <p>Yes! No jeweler or special tools are needed. The Casio Vintage steel bracelet uses a micro-adjustable sliding lock clasp. Simply lift the locking lever gently with a coin, key, or small screwdriver, slide the clasp along the mesh band to your desired wrist size, and snap it closed. It takes less than 10 seconds.</p>
+            </div>
+          </details>
+
+          <details class="rt-faq-item">
+            <summary class="rt-faq-question">
+              <span>What is your return & replacement policy?</span>
+              <span class="rt-faq-chevron">+</span>
+            </summary>
+            <div class="rt-faq-answer">
+              <p>We provide a 30-Day Hassle-Free Replacement Guarantee. In the rare event your timepiece arrives with transit damage or an operational defect, message our WhatsApp support (+91 9211297090) with a quick 5-second video or photo. We will immediately arrange a priority replacement at no extra charge.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retrotick Contact Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Top Badge",
+      "default": "✦ DIRECT CONCIERGE & SUPPORT // RETROTICK.IN"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page Title",
+      "default": "How Can We Help You Today?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Have questions regarding your Casio Vintage Steel order, sizing, or express COD dispatch tracking? Our dedicated support team is available 6 days a week."
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number",
+      "default": "+91 9211297090"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp",
+      "label": "WhatsApp Number",
+      "default": "+91 9211297090"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Support Email",
+      "default": "q21qq12q@gmail.com"
+    },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Support Hours",
+      "default": "Mon - Sat: 10:00 AM – 6:00 PM IST"
+    },
+    {
+      "type": "text",
+      "id": "legal_biz",
+      "label": "Legal Business Name",
+      "default": "Dabh India"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_faq",
+      "label": "Show FAQ Section",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retrotick Contact Page"
+    }
+  ]
+}
+{% endschema %}
