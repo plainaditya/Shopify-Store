@@ -2364,8 +2364,26 @@ html[data-theme="light"] .rt-sticky-btn {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* Footer overrides */
-html[data-theme="light"] .footer {
+/* --------------------------------------------------------------------------
+   FOOTER OVERRIDES & STICKY BUY BAR CLEARANCE
+   -------------------------------------------------------------------------- */
+footer,
+#footer-group,
+.footer-section,
+.footer,
+.utilities {
+  position: relative;
+  z-index: 10;
+  overflow: visible !important;
+}
+
+footer {
+  padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+html[data-theme="light"] .footer,
+html[data-theme="light"] #footer-group,
+html[data-theme="light"] footer {
   background-color: #edf1f6 !important;
   border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
@@ -2379,4 +2397,34 @@ html[data-theme="light"] .footer a {
 
 html[data-theme="light"] .footer p {
   color: #525a66 !important;
+}
+
+html[data-theme="light"] .utilities a,
+html[data-theme="light"] .footer-utilities__text,
+html[data-theme="light"] .footer-utilities__group-copyright {
+  color: #4a5568 !important;
+}
+
+html[data-theme="dark"] footer,
+html[data-theme="dark"] #footer-group,
+html[data-theme="dark"] .footer {
+  background-color: #06090e !important;
+  border-top: 1px solid var(--rt-border) !important;
+}
+
+html[data-theme="dark"] .footer h2,
+html[data-theme="dark"] .footer h3,
+html[data-theme="dark"] .footer h4,
+html[data-theme="dark"] .footer a {
+  color: #f5f7fa !important;
+}
+
+html[data-theme="dark"] .footer p {
+  color: #a0aec0 !important;
+}
+
+html[data-theme="dark"] .utilities a,
+html[data-theme="dark"] .footer-utilities__text,
+html[data-theme="dark"] .footer-utilities__group-copyright {
+  color: #94a3b8 !important;
 }

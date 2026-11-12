@@ -45,8 +45,23 @@
             <div class="rt-slide-caption">VIEW 01 // FRONT DIAL</div>
           </div>
 
-          <!-- Slide 1: Dial & Casing Close-Up -->
-          <div class="rt-slide-panel" data-slide="1">
+          <!-- Slide 1: Cyan EL Backlight Night Glow (Moved to 2nd Position) -->
+          <div class="rt-slide-panel rt-slide-night" data-slide="1">
+            <div class="rt-img-frame rt-frame-glow rt-frame-el-glow">
+              <img
+                src="{{ 'casio-el-backlight.jpg' | asset_url }}"
+                alt="Casio Vintage EL Night Backlight"
+                class="rt-stage-img rt-img-el-real"
+                loading="lazy"
+                width="800"
+                height="800"
+              >
+            </div>
+            <div class="rt-slide-caption rt-caption-glow">VIEW 02 // EL NIGHT BACKLIGHT</div>
+          </div>
+
+          <!-- Slide 2: Dial & Casing Close-Up (Shifted to 3rd Position) -->
+          <div class="rt-slide-panel" data-slide="2">
             <div class="rt-img-frame rt-frame-zoom">
               {%- if product.images.size > 1 -%}
                 <img
@@ -77,11 +92,11 @@
                 >
               {%- endif -%}
             </div>
-            <div class="rt-slide-caption">VIEW 02 // MACRO DETAIL</div>
+            <div class="rt-slide-caption">VIEW 03 // MACRO DETAIL</div>
           </div>
 
-          <!-- Slide 2: Stainless Steel Bracelet View -->
-          <div class="rt-slide-panel" data-slide="2">
+          <!-- Slide 3: Stainless Steel Bracelet View (Shifted to 4th Position) -->
+          <div class="rt-slide-panel" data-slide="3">
             <div class="rt-img-frame rt-frame-bracelet">
               {%- if product.images.size > 2 -%}
                 <img
@@ -112,11 +127,11 @@
                 >
               {%- endif -%}
             </div>
-            <div class="rt-slide-caption">VIEW 03 // 316L STEEL BRACELET</div>
+            <div class="rt-slide-caption">VIEW 04 // 316L STEEL BRACELET</div>
           </div>
 
-          <!-- Slide 3: Case & Side Profile (Renamed 4th View) -->
-          <div class="rt-slide-panel" data-slide="3">
+          <!-- Slide 4: Case & Side Profile (Shifted to 5th Position) -->
+          <div class="rt-slide-panel" data-slide="4">
             <div class="rt-img-frame rt-frame-profile">
               {%- if product.images.size > 3 -%}
                 <img
@@ -147,22 +162,7 @@
                 >
               {%- endif -%}
             </div>
-            <div class="rt-slide-caption">VIEW 04 // CASE & PROFILE</div>
-          </div>
-
-          <!-- Slide 4: Cyan EL Backlight Night Glow (New 5th View) -->
-          <div class="rt-slide-panel rt-slide-night" data-slide="4">
-            <div class="rt-img-frame rt-frame-glow rt-frame-el-glow">
-              <img
-                src="{{ 'casio-el-backlight.jpg' | asset_url }}"
-                alt="Casio Vintage EL Night Backlight"
-                class="rt-stage-img rt-img-el-real"
-                loading="lazy"
-                width="800"
-                height="800"
-              >
-            </div>
-            <div class="rt-slide-caption rt-caption-glow">VIEW 05 // EL NIGHT BACKLIGHT</div>
+            <div class="rt-slide-caption">VIEW 05 // CASE & PROFILE</div>
           </div>
         </div>
 
@@ -184,8 +184,9 @@
         </div>
       </div>
 
-      <!-- Visible Visual Thumbnails Row with 5 Image Previews -->
+      <!-- Visible Visual Thumbnails Row with 5 Image Previews (New Order: Dial, EL Glow, Close-Up, Steel Band, Profile) -->
       <div class="rt-thumb-gallery" id="RtThumbGallery">
+        <!-- 1st Thumbnail: Dial -->
         <button type="button" class="rt-thumb-card active" data-slide-target="0">
           <div class="rt-thumb-preview">
             {%- if main_img != blank -%}
@@ -197,7 +198,16 @@
           <span class="rt-thumb-title">Dial</span>
         </button>
 
-        <button type="button" class="rt-thumb-card" data-slide-target="1">
+        <!-- 2nd Thumbnail: EL Glow (Moved to 2nd Position) -->
+        <button type="button" class="rt-thumb-card rt-thumb-card-glow" data-slide-target="1">
+          <div class="rt-thumb-preview">
+            <img src="{{ 'casio-el-backlight.jpg' | asset_url }}" alt="EL Glow">
+          </div>
+          <span class="rt-thumb-title">EL Glow 💡</span>
+        </button>
+
+        <!-- 3rd Thumbnail: Close-Up (Shifted to 3rd Position) -->
+        <button type="button" class="rt-thumb-card" data-slide-target="2">
           <div class="rt-thumb-preview">
             {%- if product.images.size > 1 -%}
               <img src="{{ product.images[1] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Close Up">
@@ -210,7 +220,8 @@
           <span class="rt-thumb-title">Close-Up</span>
         </button>
 
-        <button type="button" class="rt-thumb-card" data-slide-target="2">
+        <!-- 4th Thumbnail: Steel Band (Shifted to 4th Position) -->
+        <button type="button" class="rt-thumb-card" data-slide-target="3">
           <div class="rt-thumb-preview">
             {%- if product.images.size > 2 -%}
               <img src="{{ product.images[2] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Steel">
@@ -223,7 +234,8 @@
           <span class="rt-thumb-title">Steel Band</span>
         </button>
 
-        <button type="button" class="rt-thumb-card" data-slide-target="3">
+        <!-- 5th Thumbnail: Profile (Shifted to 5th Position) -->
+        <button type="button" class="rt-thumb-card" data-slide-target="4">
           <div class="rt-thumb-preview">
             {%- if product.images.size > 3 -%}
               <img src="{{ product.images[3] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Profile">
@@ -234,13 +246,6 @@
             {%- endif -%}
           </div>
           <span class="rt-thumb-title">Profile</span>
-        </button>
-
-        <button type="button" class="rt-thumb-card rt-thumb-card-glow" data-slide-target="4">
-          <div class="rt-thumb-preview">
-            <img src="{{ 'casio-el-backlight.jpg' | asset_url }}" alt="EL Glow">
-          </div>
-          <span class="rt-thumb-title">EL Glow 💡</span>
         </button>
       </div>
 
@@ -435,7 +440,7 @@
       var intervalDuration = 5000; // 5 seconds
 
       function updateThemeForSlide(slideIdx) {
-        var isNightSlide = (slideIdx === 4);
+        var isNightSlide = (slideIdx === 1);
         var targetTheme = isNightSlide ? 'dark' : 'light';
         var currentTheme = document.documentElement.getAttribute('data-theme');
 
@@ -475,8 +480,8 @@
           t.classList.toggle('active', i === currentSlide);
         });
 
-        // Auto dark mode trigger on the 5th image (EL GLOW, index 4)
-        // Automatically turns on dark mode whenever on slide 4, and returns to normal light mode on all other slides
+        // Auto dark mode trigger on the 2nd image (EL GLOW, index 1)
+        // Automatically turns on dark mode whenever on slide 1, and returns to normal light mode on all other slides
         updateThemeForSlide(currentSlide);
       }
 
@@ -521,7 +526,7 @@
           e.preventDefault();
           var target = parseInt(this.getAttribute('data-slide-target'), 10);
           showSlide(target);
-          if (target === 4) {
+          if (target === 1) {
             stopAutoPlay();
           } else {
             startAutoPlay();
@@ -534,7 +539,7 @@
           e.preventDefault();
           var target = parseInt(this.getAttribute('data-index'), 10);
           showSlide(target);
-          if (target === 4) {
+          if (target === 1) {
             stopAutoPlay();
           } else {
             startAutoPlay();
@@ -546,13 +551,13 @@
       if (glowBtn) {
         glowBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          if (currentSlide === 4) {
-            // Already in night view -> return to daylight view
+          if (currentSlide === 1) {
+            // Already in night view -> return to daylight view (slide 0)
             showSlide(0);
             startAutoPlay();
           } else {
-            // Jump directly to 5th view -> auto-triggers dark mode
-            showSlide(4);
+            // Jump directly to 2nd view (EL Glow, slide 1) -> auto-triggers dark mode
+            showSlide(1);
             stopAutoPlay();
           }
         });
