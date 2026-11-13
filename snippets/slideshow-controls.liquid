@@ -126,7 +126,7 @@
                 {{
                   media.preview_image
                   | image_url: width: 144
-                  | image_tag: loading: 'lazy', alt: media.alt, style: focal_point_style
+                  | image_tag: loading: 'lazy', decoding: 'async', alt: media.alt, style: focal_point_style
                   | escape
                 }}
 

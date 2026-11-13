@@ -16,7 +16,7 @@
     {{
       link.object.featured_image
       | image_url: width: 800
-      | image_tag: loading: 'lazy', class: class, sizes: image_sizes
+      | image_tag: loading: 'lazy', decoding: 'async', class: class, sizes: image_sizes
     }}
   {% endif %}
 {% elsif link.type == 'collections_link' %}
@@ -25,7 +25,7 @@
     {{
       collection_object.featured_image
       | image_url: width: 800
-      | image_tag: loading: 'lazy', class: class, sizes: image_sizes
+      | image_tag: loading: 'lazy', decoding: 'async', class: class, sizes: image_sizes
     }}
   {% endif %}
 {% elsif link.type == 'catalog_link' %}
@@ -34,7 +34,7 @@
     {{
       product_object.featured_image
       | image_url: width: 800
-      | image_tag: loading: 'lazy', class: class, sizes: image_sizes
+      | image_tag: loading: 'lazy', decoding: 'async', class: class, sizes: image_sizes
     }}
   {% endif %}
 {% endif %}
