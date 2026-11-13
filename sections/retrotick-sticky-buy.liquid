@@ -7,39 +7,42 @@
 <div class="rt-sticky-bar" id="RtStickyBar" aria-hidden="true">
   <div class="rt-sticky-inner">
     <div class="rt-sticky-prod">
-      {%- if current_prod.featured_image != blank -%}
-        <img
-          class="rt-sticky-thumb"
-          src="{{ current_prod.featured_image | image_url: width: 90, height: 90, crop: 'center' }}"
-          alt="{{ current_prod.title | escape }}"
-          loading="lazy"
-        >
-      {%- else -%}
-        <img
-          class="rt-sticky-thumb"
-          src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=120&q=80"
-          alt=""
-          loading="lazy"
-        >
-      {%- endif -%}
-      <div>
+      <div class="rt-sticky-thumb-card">
+        {%- if current_prod.featured_image != blank -%}
+          <img
+            class="rt-sticky-thumb"
+            src="{{ current_prod.featured_image | image_url: width: 140, height: 140, crop: 'center' }}"
+            alt="{{ current_prod.title | escape }}"
+            loading="lazy"
+          >
+        {%- else -%}
+          <img
+            class="rt-sticky-thumb"
+            src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=140&q=80"
+            alt="{{ current_prod.title | escape }}"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
+      <div class="rt-sticky-info">
         <p class="rt-sticky-title">{{ current_prod.title | default: "Casio Vintage A168W Steel" }}</p>
         <p class="rt-sticky-price">
-          <strong style="font-size: 1rem;">{{ prod_price }}</strong>
+          <strong class="rt-sticky-main-price">{{ prod_price }}</strong>
           {%- if current_prod.compare_at_price > current_prod.price -%}
-            <span style="text-decoration: line-through; opacity: 0.6; margin: 0 6px;">{{ compare_price }}</span>
-            <span class="rt-discount-pill" style="padding: 2px 7px; font-size: 0.68rem;">SALE</span>
+            <span class="rt-sticky-cut-price">{{ compare_price }}</span>
+            <span class="rt-sticky-discount-pill">SALE</span>
           {%- else -%}
-            <span style="text-decoration: line-through; opacity: 0.6; margin: 0 6px;">₹1,999</span>
-            <span class="rt-discount-pill" style="padding: 2px 7px; font-size: 0.68rem;">50% OFF</span>
+            <span class="rt-sticky-cut-price">₹1,999</span>
+            <span class="rt-sticky-discount-pill">50% OFF</span>
           {%- endif -%}
         </p>
       </div>
     </div>
 
-    <div>
+    <div class="rt-sticky-action">
       <a href="#TheWatch" class="rt-sticky-btn" id="RtStickyBtn">
-        Order Now – {{ prod_price }} (COD)
+        <span class="rt-sticky-btn-text-desktop">ORDER NOW – {{ prod_price }} (COD) ➔</span>
+        <span class="rt-sticky-btn-text-mobile">ORDER NOW ➔</span>
       </a>
     </div>
   </div>
@@ -54,10 +57,10 @@
       if (!stickyBar || !heroSection) return;
 
       const btn = document.getElementById('RtStickyBtn');
-      if (btn && !document.getElementById('TheWatch')) {
+      if (btn) {
         btn.addEventListener('click', function(e) {
           e.preventDefault();
-          const target = document.querySelector('form[action*="/cart/add"] button[type="submit"]') || document.querySelector('.product-details') || document.querySelector('.product-information');
+          const target = document.querySelector('.rt-btn-buy-now') || document.querySelector('form[action*="/cart/add"] button[type="submit"]') || document.getElementById('TheWatch') || document.querySelector('.product-details');
           if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'center' });
             if (target.tagName === 'BUTTON' && !target.disabled) {
@@ -67,8 +70,21 @@
         });
       }
 
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(function(entries) {
+      function isCartOpen() {
+        const cartDrawer = document.getElementById('cart-drawer');
+        if (cartDrawer && cartDrawer.hasAttribute('open')) return true;
+        if (document.querySelector('dialog.theme-drawer__dialog[open]')) return true;
+        return false;
+      }
+
+      function updateVisibility(entries) {
+        if (isCartOpen()) {
+          stickyBar.classList.remove('visible');
+          stickyBar.setAttribute('aria-hidden', 'true');
+          return;
+        }
+
+        if (entries) {
           entries.forEach(function(entry) {
             if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
               stickyBar.classList.add('visible');
@@ -78,20 +94,35 @@
               stickyBar.setAttribute('aria-hidden', 'true');
             }
           });
-        }, { threshold: [0], rootMargin: '-60px 0px 0px 0px' });
+        }
+      }
+
+      // Hide sticky bar when cart drawer is opened
+      document.addEventListener('theme-drawer:open', function() {
+        stickyBar.classList.remove('visible');
+        stickyBar.setAttribute('aria-hidden', 'true');
+      });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(updateVisibility, { threshold: [0], rootMargin: '-60px 0px 0px 0px' });
         observer.observe(heroSection);
       } else {
         let ticking = false;
         window.addEventListener('scroll', function() {
           if (!ticking) {
             window.requestAnimationFrame(function() {
-              const heroBottom = heroSection.getBoundingClientRect().bottom;
-              if (heroBottom < 100) {
-                stickyBar.classList.add('visible');
-                stickyBar.setAttribute('aria-hidden', 'false');
-              } else {
+              if (isCartOpen()) {
                 stickyBar.classList.remove('visible');
                 stickyBar.setAttribute('aria-hidden', 'true');
+              } else {
+                const heroBottom = heroSection.getBoundingClientRect().bottom;
+                if (heroBottom < 100) {
+                  stickyBar.classList.add('visible');
+                  stickyBar.setAttribute('aria-hidden', 'false');
+                } else {
+                  stickyBar.classList.remove('visible');
+                  stickyBar.setAttribute('aria-hidden', 'true');
+                }
               }
               ticking = false;
             });
