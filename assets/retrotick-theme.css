@@ -5322,8 +5322,10 @@ html[data-theme="dark"] .rt-checkout-cta:hover {
   transition: background-color 0.3s ease, color 0.3s ease !important;
 }
 
-/* Light Mode Drawer */
+/* Light Mode Drawer Surface */
+html[data-theme="light"] dialog.theme-drawer__dialog,
 html[data-theme="light"] .theme-drawer__dialog,
+html[data-theme="light"] .color-custom-drawer,
 html[data-theme="light"] .cart-drawer,
 html[data-theme="light"] .cart-drawer__inner,
 html[data-theme="light"] .cart-drawer__content,
@@ -5335,34 +5337,62 @@ html[data-theme="light"] .theme-drawer__header {
   --color-foreground: #090b0e !important;
 }
 
-/* Dark Mode Drawer */
+html[data-theme="light"] .theme-drawer__title,
+html[data-theme="light"] .cart-items__title,
+html[data-theme="light"] .cart-items__price,
+html[data-theme="light"] .rt-summary-title,
+html[data-theme="light"] .rt-total-main-label,
+html[data-theme="light"] .rt-total-price-nowrap,
+html[data-theme="light"] .rt-summary-line-val {
+  color: #090b0e !important;
+}
+
+html[data-theme="light"] .cart-items__table-row,
+html[data-theme="light"] .cart-drawer__items .cart-items__table-row,
+html[data-theme="light"] .cart-totals {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Dark Mode Drawer Surface */
+html[data-theme="dark"] dialog.theme-drawer__dialog,
 html[data-theme="dark"] .theme-drawer__dialog,
-html:not([data-theme="light"]) .theme-drawer__dialog,
+html[data-theme="dark"] .color-custom-drawer,
 html[data-theme="dark"] .cart-drawer,
-html:not([data-theme="light"]) .cart-drawer,
 html[data-theme="dark"] .cart-drawer__inner,
-html:not([data-theme="light"]) .cart-drawer__inner,
 html[data-theme="dark"] .cart-drawer__content,
-html:not([data-theme="light"]) .cart-drawer__content,
 html[data-theme="dark"] .cart-drawer__summary,
-html:not([data-theme="light"]) .cart-drawer__summary,
-html[data-theme="dark"] .theme-drawer__header,
-html:not([data-theme="light"]) .theme-drawer__header {
+html[data-theme="dark"] .theme-drawer__header {
   background-color: #0b0c10 !important;
   color: #f5f7fa !important;
   --color-background: #0b0c10 !important;
   --color-foreground: #f5f7fa !important;
 }
 
-html[data-theme="dark"] .theme-drawer__close-button,
-html:not([data-theme="light"]) .theme-drawer__close-button {
+html[data-theme="dark"] .theme-drawer__title,
+html[data-theme="dark"] .cart-items__title,
+html[data-theme="dark"] .cart-items__price,
+html[data-theme="dark"] .rt-summary-title,
+html[data-theme="dark"] .rt-total-main-label,
+html[data-theme="dark"] .rt-total-price-nowrap,
+html[data-theme="dark"] .rt-summary-line-val {
+  color: #f5f7fa !important;
+}
+
+html[data-theme="dark"] .cart-items__table-row,
+html[data-theme="dark"] .cart-drawer__items .cart-items__table-row,
+html[data-theme="dark"] .cart-totals {
+  background-color: #12141c !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme="dark"] .theme-drawer__close-button {
   background: rgba(255, 255, 255, 0.08) !important;
   border-color: rgba(255, 255, 255, 0.15) !important;
   color: #f5f7fa !important;
 }
 
-html[data-theme="dark"] .theme-drawer__close-button svg,
-html:not([data-theme="light"]) .theme-drawer__close-button svg {
+html[data-theme="dark"] .theme-drawer__close-button svg {
   stroke: #f5f7fa !important;
 }
 

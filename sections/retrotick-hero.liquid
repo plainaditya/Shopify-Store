@@ -439,8 +439,19 @@
       var slideInterval = null;
       var intervalDuration = 5000; // 5 seconds
 
+      function isCartOpen() {
+        var drawer = document.getElementById('cart-drawer');
+        if (drawer && (drawer.hasAttribute('open') || drawer.classList.contains('active'))) return true;
+        var dialog = document.querySelector('dialog.theme-drawer__dialog[open], dialog[open]');
+        if (dialog) return true;
+        var trigger = document.querySelector('[data-testid="cart-drawer-trigger"][aria-expanded="true"]');
+        if (trigger) return true;
+        return false;
+      }
+
       function updateThemeForSlide(slideIdx) {
         var isNightSlide = (slideIdx === 1);
+        var targetTheme = isNightSlide ? 'dark' : 'light';
 
         if (glowBtn) {
           var btnSpan = glowBtn.querySelector('span');
@@ -451,6 +462,25 @@
               btnSpan.textContent = 'Click to test EL Night Backlight';
             }
           }
+        }
+
+        // Sync header toggle label and checkboxes if present
+        var toggleLabel = document.getElementById('RtToggleLabel');
+        if (toggleLabel) {
+          toggleLabel.textContent = isNightSlide ? 'Dark' : 'Light';
+        }
+        var toggleInputs = document.querySelectorAll('#rt-theme-checkbox, input.rt-theme-toggle-input');
+        toggleInputs.forEach(function(inp) { inp.checked = isNightSlide; });
+
+        // Never override theme in background if user has cart drawer open
+        if (isCartOpen()) return;
+
+        var currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme !== targetTheme) {
+          document.documentElement.setAttribute('data-theme', targetTheme);
+          try {
+            localStorage.setItem('retrotick_theme', targetTheme);
+          } catch(err) {}
         }
       }
 
@@ -469,11 +499,12 @@
           t.classList.toggle('active', i === currentSlide);
         });
 
-        // Update glow button status when on 2nd slide (EL GLOW, index 1)
+        // Trigger night dark mode on slide 1 (EL GLOW), daylight on all other slides
         updateThemeForSlide(currentSlide);
       }
 
       function next() {
+        if (isCartOpen()) return;
         showSlide(currentSlide + 1);
       }
 
@@ -490,6 +521,53 @@
         if (slideInterval) {
           clearInterval(slideInterval);
           slideInterval = null;
+        }
+      }
+
+      // Immediately pause carousel and ensure daylight light mode if Cart drawer opens
+      function handleCartOpen() {
+        stopAutoPlay();
+        if (currentSlide === 1) {
+          showSlide(0);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          try {
+            localStorage.setItem('retrotick_theme', 'light');
+          } catch(err) {}
+        }
+      }
+
+      function handleCartClose() {
+        setTimeout(function() {
+          if (!isCartOpen()) {
+            startAutoPlay();
+          }
+        }, 400);
+      }
+
+      document.addEventListener('theme-drawer:open', handleCartOpen, true);
+      document.addEventListener('theme-drawer:close', handleCartClose, true);
+
+      // Proactively catch header cart trigger clicks before drawer completes opening
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('[data-testid="cart-drawer-trigger"], [aria-controls="cart-drawer"], .cart-bubble, .header-actions__action--cart')) {
+          handleCartOpen();
+        }
+      }, true);
+
+      var cartDrawerEl = document.getElementById('cart-drawer');
+      if (cartDrawerEl) {
+        var cartObserver = new MutationObserver(function() {
+          if (isCartOpen()) {
+            handleCartOpen();
+          } else {
+            handleCartClose();
+          }
+        });
+        cartObserver.observe(cartDrawerEl, { attributes: true, attributeFilter: ['open', 'class'] });
+        var dialogEl = cartDrawerEl.querySelector('dialog');
+        if (dialogEl) {
+          cartObserver.observe(dialogEl, { attributes: true, attributeFilter: ['open', 'class'] });
         }
       }
 
@@ -539,6 +617,7 @@
       if (glowBtn) {
         glowBtn.addEventListener('click', function(e) {
           e.preventDefault();
+          e.stopPropagation();
           if (currentSlide === 1) {
             // Already in night view -> return to daylight view (slide 0)
             showSlide(0);
