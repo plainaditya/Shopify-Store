@@ -663,9 +663,9 @@
             <a href="{{ feat_prod.url }}" class="rt-featured-watch-row">
               <div class="rt-featured-img-wrap">
                 {%- if feat_prod.featured_image != blank -%}
-                  <img src="{{ feat_prod.featured_image | image_url: width: 140 }}" alt="{{ feat_prod.title | escape }}" class="rt-featured-thumb" width="48" height="48" loading="lazy">
+                  <img src="{{ feat_prod.featured_image | image_url: width: 140 }}" alt="{{ feat_prod.title | escape }}" class="rt-featured-thumb" width="48" height="48" loading="lazy" decoding="async">
                 {%- else -%}
-                  <img src="{{ 'casio-el-backlight.jpg' | asset_url }}" alt="Casio Vintage A168W" class="rt-featured-thumb" width="48" height="48" loading="lazy">
+                  <img src="{{ 'casio-el-backlight.jpg' | asset_url }}" alt="Casio Vintage A168W" class="rt-featured-thumb" width="48" height="48" loading="lazy" decoding="async">
                 {%- endif -%}
               </div>
               <div class="rt-featured-info">

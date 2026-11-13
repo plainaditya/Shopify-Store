@@ -22,7 +22,9 @@
             <div class="rt-img-frame">
               {%- if main_img != blank -%}
                 <img
-                  src="{{ main_img | image_url: width: 1200 }}"
+                  src="{{ main_img | image_url: width: 800 }}"
+                  srcset="{{ main_img | image_url: width: 400 }} 400w, {{ main_img | image_url: width: 600 }} 600w, {{ main_img | image_url: width: 800 }} 800w, {{ main_img | image_url: width: 1200 }} 1200w"
+                  sizes="(max-width: 768px) 92vw, 600px"
                   alt="{{ product.title | escape }} - Dial View"
                   class="rt-stage-img"
                   loading="eager"
@@ -32,7 +34,7 @@
                 >
               {%- else -%}
                 <img
-                  src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1200&q=80"
+                  src="{{ 'casio-fallback-dial.jpg' | asset_url }}"
                   alt="Casio Vintage Stainless Steel Watch"
                   class="rt-stage-img"
                   loading="eager"
@@ -53,6 +55,7 @@
                 alt="Casio Vintage EL Night Backlight"
                 class="rt-stage-img rt-img-el-real"
                 loading="lazy"
+                decoding="async"
                 width="800"
                 height="800"
               >
@@ -65,28 +68,35 @@
             <div class="rt-img-frame rt-frame-zoom">
               {%- if product.images.size > 1 -%}
                 <img
-                  src="{{ product.images[1] | image_url: width: 1200 }}"
+                  src="{{ product.images[1] | image_url: width: 800 }}"
+                  srcset="{{ product.images[1] | image_url: width: 400 }} 400w, {{ product.images[1] | image_url: width: 600 }} 600w, {{ product.images[1] | image_url: width: 800 }} 800w, {{ product.images[1] | image_url: width: 1200 }} 1200w"
+                  sizes="(max-width: 768px) 92vw, 600px"
                   alt="Casio Dial Close Up"
                   class="rt-stage-img"
                   loading="lazy"
+                  decoding="async"
                   width="800"
                   height="800"
                 >
               {%- elsif main_img != blank -%}
                 <img
-                  src="{{ main_img | image_url: width: 1200 }}"
+                  src="{{ main_img | image_url: width: 800 }}"
+                  srcset="{{ main_img | image_url: width: 400 }} 400w, {{ main_img | image_url: width: 600 }} 600w, {{ main_img | image_url: width: 800 }} 800w, {{ main_img | image_url: width: 1200 }} 1200w"
+                  sizes="(max-width: 768px) 92vw, 600px"
                   alt="Casio Dial Detail"
                   class="rt-stage-img rt-img-macro"
                   loading="lazy"
+                  decoding="async"
                   width="800"
                   height="800"
                 >
               {%- else -%}
                 <img
-                  src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80"
+                  src="{{ 'casio-fallback-detail.jpg' | asset_url }}"
                   alt="Casio Vintage Close Up"
                   class="rt-stage-img"
                   loading="lazy"
+                  decoding="async"
                   width="800"
                   height="800"
                 >
@@ -100,28 +110,35 @@
             <div class="rt-img-frame rt-frame-bracelet">
               {%- if product.images.size > 2 -%}
                 <img
-                  src="{{ product.images[2] | image_url: width: 1200 }}"
+                  src="{{ product.images[2] | image_url: width: 800 }}"
+                  srcset="{{ product.images[2] | image_url: width: 400 }} 400w, {{ product.images[2] | image_url: width: 600 }} 600w, {{ product.images[2] | image_url: width: 800 }} 800w, {{ product.images[2] | image_url: width: 1200 }} 1200w"
+                  sizes="(max-width: 768px) 92vw, 600px"
                   alt="Casio Steel Bracelet"
                   class="rt-stage-img"
                   loading="lazy"
+                  decoding="async"
                   width="800"
                   height="800"
                 >
               {%- elsif main_img != blank -%}
                 <img
-                  src="{{ main_img | image_url: width: 1200 }}"
+                  src="{{ main_img | image_url: width: 800 }}"
+                  srcset="{{ main_img | image_url: width: 400 }} 400w, {{ main_img | image_url: width: 600 }} 600w, {{ main_img | image_url: width: 800 }} 800w, {{ main_img | image_url: width: 1200 }} 1200w"
+                  sizes="(max-width: 768px) 92vw, 600px"
                   alt="Casio Steel Links"
                   class="rt-stage-img rt-img-angle"
                   loading="lazy"
+                  decoding="async"
                   width="800"
                   height="800"
                 >
               {%- else -%}
                 <img
-                  src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=1200&q=80"
+                  src="{{ 'casio-fallback-steel.jpg' | asset_url }}"
                   alt="Casio Steel Links"
                   class="rt-stage-img"
                   loading="lazy"
+                  decoding="async"
                   width="800"
                   height="800"
                 >
@@ -135,28 +152,35 @@
             <div class="rt-img-frame rt-frame-profile">
               {%- if product.images.size > 3 -%}
                 <img
-                  src="{{ product.images[3] | image_url: width: 1200 }}"
+                  src="{{ product.images[3] | image_url: width: 800 }}"
+                  srcset="{{ product.images[3] | image_url: width: 400 }} 400w, {{ product.images[3] | image_url: width: 600 }} 600w, {{ product.images[3] | image_url: width: 800 }} 800w, {{ product.images[3] | image_url: width: 1200 }} 1200w"
+                  sizes="(max-width: 768px) 92vw, 600px"
                   alt="Casio Case & Side Profile"
                   class="rt-stage-img"
                   loading="lazy"
+                  decoding="async"
                   width="800"
                   height="800"
                 >
               {%- elsif main_img != blank -%}
                 <img
-                  src="{{ main_img | image_url: width: 1200 }}"
+                  src="{{ main_img | image_url: width: 800 }}"
+                  srcset="{{ main_img | image_url: width: 400 }} 400w, {{ main_img | image_url: width: 600 }} 600w, {{ main_img | image_url: width: 800 }} 800w, {{ main_img | image_url: width: 1200 }} 1200w"
+                  sizes="(max-width: 768px) 92vw, 600px"
                   alt="Casio Case & Side Profile"
                   class="rt-stage-img"
                   loading="lazy"
+                  decoding="async"
                   width="800"
                   height="800"
                 >
               {%- else -%}
                 <img
-                  src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80"
+                  src="{{ 'casio-fallback-detail.jpg' | asset_url }}"
                   alt="Casio Case & Side Profile"
                   class="rt-stage-img"
                   loading="lazy"
+                  decoding="async"
                   width="800"
                   height="800"
                 >
@@ -190,9 +214,9 @@
         <button type="button" class="rt-thumb-card active" data-slide-target="0">
           <div class="rt-thumb-preview">
             {%- if main_img != blank -%}
-              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Dial">
+              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Dial" width="140" height="140" loading="lazy" decoding="async">
             {%- else -%}
-              <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=120&q=80" alt="Dial">
+              <img src="{{ 'casio-fallback-dial.jpg' | asset_url }}" alt="Dial" width="140" height="140" loading="lazy" decoding="async">
             {%- endif -%}
           </div>
           <span class="rt-thumb-title">Dial</span>
@@ -201,7 +225,7 @@
         <!-- 2nd Thumbnail: EL Glow (Moved to 2nd Position) -->
         <button type="button" class="rt-thumb-card rt-thumb-card-glow" data-slide-target="1">
           <div class="rt-thumb-preview">
-            <img src="{{ 'casio-el-backlight.jpg' | asset_url }}" alt="EL Glow">
+            <img src="{{ 'casio-el-backlight.jpg' | asset_url }}" alt="EL Glow" width="140" height="140" loading="lazy" decoding="async">
           </div>
           <span class="rt-thumb-title">EL Glow 💡</span>
         </button>
@@ -210,11 +234,11 @@
         <button type="button" class="rt-thumb-card" data-slide-target="2">
           <div class="rt-thumb-preview">
             {%- if product.images.size > 1 -%}
-              <img src="{{ product.images[1] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Close Up">
+              <img src="{{ product.images[1] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Close Up" width="140" height="140" loading="lazy" decoding="async">
             {%- elsif main_img != blank -%}
-              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Close Up" style="transform: scale(1.4);">
+              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Close Up" style="transform: scale(1.4);" width="140" height="140" loading="lazy" decoding="async">
             {%- else -%}
-              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=120&q=80" alt="Close Up">
+              <img src="{{ 'casio-fallback-detail.jpg' | asset_url }}" alt="Close Up" width="140" height="140" loading="lazy" decoding="async">
             {%- endif -%}
           </div>
           <span class="rt-thumb-title">Close-Up</span>
@@ -224,11 +248,11 @@
         <button type="button" class="rt-thumb-card" data-slide-target="3">
           <div class="rt-thumb-preview">
             {%- if product.images.size > 2 -%}
-              <img src="{{ product.images[2] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Steel">
+              <img src="{{ product.images[2] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Steel" width="140" height="140" loading="lazy" decoding="async">
             {%- elsif main_img != blank -%}
-              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Steel" style="transform: rotate(20deg);">
+              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Steel" style="transform: rotate(20deg);" width="140" height="140" loading="lazy" decoding="async">
             {%- else -%}
-              <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=120&q=80" alt="Steel">
+              <img src="{{ 'casio-fallback-steel.jpg' | asset_url }}" alt="Steel" width="140" height="140" loading="lazy" decoding="async">
             {%- endif -%}
           </div>
           <span class="rt-thumb-title">Steel Band</span>
@@ -238,11 +262,11 @@
         <button type="button" class="rt-thumb-card" data-slide-target="4">
           <div class="rt-thumb-preview">
             {%- if product.images.size > 3 -%}
-              <img src="{{ product.images[3] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Profile">
+              <img src="{{ product.images[3] | image_url: width: 140, height: 140, crop: 'center' }}" alt="Profile" width="140" height="140" loading="lazy" decoding="async">
             {%- elsif main_img != blank -%}
-              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Profile">
+              <img src="{{ main_img | image_url: width: 140, height: 140, crop: 'center' }}" alt="Profile" width="140" height="140" loading="lazy" decoding="async">
             {%- else -%}
-              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=120&q=80" alt="Profile">
+              <img src="{{ 'casio-fallback-detail.jpg' | asset_url }}" alt="Profile" width="140" height="140" loading="lazy" decoding="async">
             {%- endif -%}
           </div>
           <span class="rt-thumb-title">Profile</span>
@@ -279,10 +303,10 @@
       <!-- Human Social Proof Rating with Buyer Avatars -->
       <div class="rt-rating-row">
         <div class="rt-avatar-stack">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=72&h=72&q=80" alt="Verified Buyer" class="rt-avatar-img" width="28" height="28" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=72&h=72&q=80" alt="Verified Buyer" class="rt-avatar-img" width="28" height="28" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=72&h=72&q=80" alt="Verified Buyer" class="rt-avatar-img" width="28" height="28" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=72&h=72&q=80" alt="Verified Buyer" class="rt-avatar-img" width="28" height="28" loading="lazy">
+          <img src="{{ 'avatar-1.jpg' | asset_url }}" alt="Verified Buyer" class="rt-avatar-img" width="28" height="28" loading="lazy" decoding="async">
+          <img src="{{ 'avatar-2.jpg' | asset_url }}" alt="Verified Buyer" class="rt-avatar-img" width="28" height="28" loading="lazy" decoding="async">
+          <img src="{{ 'avatar-3.jpg' | asset_url }}" alt="Verified Buyer" class="rt-avatar-img" width="28" height="28" loading="lazy" decoding="async">
+          <img src="{{ 'avatar-4.jpg' | asset_url }}" alt="Verified Buyer" class="rt-avatar-img" width="28" height="28" loading="lazy" decoding="async">
         </div>
         <div class="rt-rating-details">
           <div class="rt-stars">★★★★★</div>

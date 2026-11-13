@@ -14,13 +14,19 @@
             src="{{ current_prod.featured_image | image_url: width: 140, height: 140, crop: 'center' }}"
             alt="{{ current_prod.title | escape }}"
             loading="lazy"
+            decoding="async"
+            width="48"
+            height="48"
           >
         {%- else -%}
           <img
             class="rt-sticky-thumb"
-            src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=140&q=80"
+            src="{{ 'casio-fallback-dial.jpg' | asset_url }}"
             alt="{{ current_prod.title | escape }}"
             loading="lazy"
+            decoding="async"
+            width="48"
+            height="48"
           >
         {%- endif -%}
       </div>
