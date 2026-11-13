@@ -4441,8 +4441,7 @@ html[data-theme="dark"] .cart-page__items {
   padding-top: 0 !important;
 }
 
-.cart-summary,
-.cart-summary__inner {
+.cart-summary {
   background: var(--rt-bg-card) !important;
   border: 1px solid var(--rt-border-steel) !important;
   border-radius: 20px !important;
@@ -4452,14 +4451,20 @@ html[data-theme="dark"] .cart-page__items {
   position: static !important;
 }
 
-html[data-theme="light"] .cart-summary,
-html[data-theme="light"] .cart-summary__inner {
+.cart-summary__inner {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  width: 100% !important;
+}
+
+html[data-theme="light"] .cart-summary {
   background: #ffffff !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-html[data-theme="dark"] .cart-summary,
-html[data-theme="dark"] .cart-summary__inner {
+html[data-theme="dark"] .cart-summary {
   background: #0d1017 !important;
   border-color: rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45) !important;
@@ -4468,14 +4473,43 @@ html[data-theme="dark"] .cart-summary__inner {
 @media screen and (max-width: 920px) {
   .cart-page {
     grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-    padding-inline: 1rem !important;
+    gap: 12px !important;
+    padding: 12px 14px 3rem !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
-  .cart-page__title,
-  .cart-page__items,
+  .cart-page__title {
+    grid-column: 1 !important;
+    margin-bottom: 0 !important;
+    padding: 0 2px !important;
+  }
+  /* Remove duplicate outer box wrapping on mobile so product & summary cards breathe */
+  .cart-page__items {
+    grid-column: 1 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
   .cart-page__summary {
     grid-column: 1 !important;
     position: static !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .cart-summary,
+  .cart-summary__inner {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    position: static !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -5098,14 +5132,15 @@ html[data-theme="dark"] .rt-checkout-cta:hover {
     column-gap: 14px !important;
     row-gap: 6px !important;
     align-items: center !important;
-    padding: 12px !important;
+    padding: 12px 14px !important;
     background: var(--rt-bg-card, #ffffff) !important;
     border: 1px solid var(--rt-border-steel, rgba(0,0,0,0.08)) !important;
-    border-radius: 16px !important;
+    border-radius: 14px !important;
     box-sizing: border-box !important;
     position: relative !important;
     margin-bottom: 0 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+    width: 100% !important;
   }
 
   html[data-theme="dark"] .cart-items__table-row,
@@ -5328,7 +5363,9 @@ html[data-theme="dark"] .rt-checkout-cta:hover {
   .rt-cart-shipping-banner {
     padding: 12px 14px !important;
     border-radius: 14px !important;
-    margin-bottom: 14px !important;
+    margin-bottom: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .rt-ship-top {
     display: flex !important;
@@ -5353,15 +5390,20 @@ html[data-theme="dark"] .rt-checkout-cta:hover {
   }
   .rt-ship-bottom {
     font-size: 0.72rem !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
   }
 
   /* Summary Box Mobile Tweaks */
   .cart-totals {
     background: var(--rt-bg-card, #ffffff) !important;
     border: 1px solid var(--rt-border-steel, rgba(0,0,0,0.08)) !important;
-    border-radius: 16px !important;
-    padding: 14px 14px 10px !important;
+    border-radius: 14px !important;
+    padding: 14px 16px 12px !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   html[data-theme="dark"] .cart-totals {
     background: rgba(255, 255, 255, 0.03) !important;
