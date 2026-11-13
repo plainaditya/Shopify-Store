@@ -441,17 +441,6 @@
 
       function updateThemeForSlide(slideIdx) {
         var isNightSlide = (slideIdx === 1);
-        var targetTheme = isNightSlide ? 'dark' : 'light';
-        var currentTheme = document.documentElement.getAttribute('data-theme');
-
-        if (currentTheme !== targetTheme) {
-          document.documentElement.setAttribute('data-theme', targetTheme);
-          try {
-            localStorage.setItem('retrotick_theme', targetTheme);
-          } catch(err) {}
-          var toggleInputs = document.querySelectorAll('#rt-theme-checkbox');
-          toggleInputs.forEach(function(inp) { inp.checked = isNightSlide; });
-        }
 
         if (glowBtn) {
           var btnSpan = glowBtn.querySelector('span');
@@ -480,8 +469,7 @@
           t.classList.toggle('active', i === currentSlide);
         });
 
-        // Auto dark mode trigger on the 2nd image (EL GLOW, index 1)
-        // Automatically turns on dark mode whenever on slide 1, and returns to normal light mode on all other slides
+        // Update glow button status when on 2nd slide (EL GLOW, index 1)
         updateThemeForSlide(currentSlide);
       }
 

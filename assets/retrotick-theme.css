@@ -5310,6 +5310,62 @@ html[data-theme="dark"] .rt-checkout-cta:hover {
   }
 }
 
+/* ==========================================================================
+   THEME DRAWER & DIALOG SURFACE (Ensures Drawer Matches Theme In Both Modes)
+   ========================================================================== */
+.theme-drawer__dialog,
+.cart-drawer,
+.cart-drawer__inner,
+.cart-drawer__content,
+.cart-drawer__summary,
+.theme-drawer__header {
+  transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+
+/* Light Mode Drawer */
+html[data-theme="light"] .theme-drawer__dialog,
+html[data-theme="light"] .cart-drawer,
+html[data-theme="light"] .cart-drawer__inner,
+html[data-theme="light"] .cart-drawer__content,
+html[data-theme="light"] .cart-drawer__summary,
+html[data-theme="light"] .theme-drawer__header {
+  background-color: #ffffff !important;
+  color: #090b0e !important;
+  --color-background: #ffffff !important;
+  --color-foreground: #090b0e !important;
+}
+
+/* Dark Mode Drawer */
+html[data-theme="dark"] .theme-drawer__dialog,
+html:not([data-theme="light"]) .theme-drawer__dialog,
+html[data-theme="dark"] .cart-drawer,
+html:not([data-theme="light"]) .cart-drawer,
+html[data-theme="dark"] .cart-drawer__inner,
+html:not([data-theme="light"]) .cart-drawer__inner,
+html[data-theme="dark"] .cart-drawer__content,
+html:not([data-theme="light"]) .cart-drawer__content,
+html[data-theme="dark"] .cart-drawer__summary,
+html:not([data-theme="light"]) .cart-drawer__summary,
+html[data-theme="dark"] .theme-drawer__header,
+html:not([data-theme="light"]) .theme-drawer__header {
+  background-color: #0b0c10 !important;
+  color: #f5f7fa !important;
+  --color-background: #0b0c10 !important;
+  --color-foreground: #f5f7fa !important;
+}
+
+html[data-theme="dark"] .theme-drawer__close-button,
+html:not([data-theme="light"]) .theme-drawer__close-button {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #f5f7fa !important;
+}
+
+html[data-theme="dark"] .theme-drawer__close-button svg,
+html:not([data-theme="light"]) .theme-drawer__close-button svg {
+  stroke: #f5f7fa !important;
+}
+
 
 
 
